@@ -1,0 +1,9 @@
+{
+  "name": "proz-saude-preview",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Servidor local para a prévia navegável do pacote Proz Saúde",
+  "scripts": {
+    "dev": "node dev-server.cjs"
+  }
+}
