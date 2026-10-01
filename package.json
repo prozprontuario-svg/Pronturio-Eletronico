@@ -5,6 +5,7 @@
   "description": "Servidor local para a prévia navegável do pacote Proz Saúde",
   "scripts": {
     "dev": "node dev-server.cjs",
+    "build": "node --check Proz-Saude/Preview/app.js",
     "deploy": "wrangler deploy"
   },
   "devDependencies": {

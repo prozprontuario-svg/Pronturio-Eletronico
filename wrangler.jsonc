@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "proz-saude-preview",
+  "name": "pronturio-eletronico",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./Proz-Saude/Preview",
