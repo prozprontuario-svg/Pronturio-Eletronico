@@ -1,0 +1,22 @@
+# Plano de execução — Proz Saúde
+
+| Bloco | Estado | Critério de conclusão |
+| --- | --- | --- |
+| Inventário Figma e memória local | Em implementação | 85 entradas registradas; falta validação visual atual de todas as telas por limite MCP |
+| Base técnica e persistência | Validado | Next, TypeScript, Tailwind, Prisma, SQLite, seed local e build |
+| Autenticação e administração | Validado | Admin único via `.env.local` (sem /setup); admin restrito ao painel e bloqueado nas APIs clínicas; CRUD de contas (criar, editar, nova senha, desativar, excluir sem registros); integração passou |
+| Pacientes e prontuário | Em implementação | Busca, filtros Internados/Todos, estado vazio e retorno à lista completa validados no navegador; cadastro e contexto implementados; URLs sem paciente ou com ID inválido retornam à lista; identificação e internação usam dados do paciente selecionado; comparação visual com o Figma atual pendente |
+| Registros clínicos | Validado | Anotação, sinais vitais (a partir do Resumo), anamnese, exame físico, admissão e alergias/riscos registrados e relidos no navegador; telas só-leitura do design ganharam painel de registro com a mesma autorização da API; perfis sem permissão veem aviso de consulta |
+| Exames, prescrição, procedimentos e cirurgia | Validado | Médico solicita exame → registra resultado (exame herdado da solicitação); prescreve → enfermagem checa item da prescrição com revisão → prescrição mostra checagens vinculadas; programação de cirurgia aparece em Cirurgias e leva ao prontuário do paciente; validado no navegador e na integração |
+| Documentos e saída hospitalar | Validado | Upload/download validados por integração; saída → revisão → confirmação validada no navegador, atualizando a situação do paciente na lista |
+| Tablet e texto | Validado | Auditoria automática em 768×1024, 820×1180, 1024×768, 1180×820, 1280×800 e 390×844 em todas as telas, login e ADM: nenhuma palavra quebrada, texto cortado ou vazando de botão e nenhum overflow horizontal (01/10/2026) |
+| Estados, rascunhos e responsividade | Em implementação | Rascunho isolado por paciente/formulário (inclui os novos formulários); revisão aguarda rascunho e bloqueia confirmação vazia; shell com conteúdo rolável e navegação inferior fixa; 390 e 1440 px sem overflow horizontal nas telas auditadas; revisão visual dedicada de erro, offline, permissão e sessão pendente |
+| Verificação final | Em implementação | Lint, typecheck, build e integração passaram em 30/09/2026; logo oficial aplicada; screenshots atualizados em `design-reference/local-audit-*.png`; paridade visual com o Figma atual pendente (cota do MCP) |
+
+O estado só muda para **Validado** depois de fluxo completo, persistência e autorização verificados.
+
+O pedido de 30/09/2026 fornece a fonte de verdade temporária em `docs/PROJECT_SOURCE_OF_TRUTH.md`. A conexão Figma `david` confirmou o inventário e forneceu o contexto de sete telas centrais; a cota Starter impediu a consulta dos demais frames e uma nova captura nesta rodada. A logo oficial está em `public/brand/proz-saude.png` e é exibida pelo componente único `components/Brand.tsx` (login, setup, sidebar, topbar mobile, telas institucionais e ADM). Os SVGs em `design-reference/figma/` são anteriores e servem apenas como apoio.
+
+Auditoria local desta execução: o prontuário não apresentou largura de documento maior que a viewport em 390, 430, 768, 1024 e 1440 px. O ADM foi inspecionado em 390 px. Sinais vitais sem aferição confirmada não exibem mais os valores de exemplo do pacote antigo. Na rodada seguinte (30/09/2026), os screenshots foram refeitos com a logo; o botão "Registrar sinais" do Resumo deixou de ficar bloqueado para perfis com permissão (ele abre o formulário em vez de tentar salvar na tela atual).
+
+Revisão de controles de 01/10/2026: abas e botões de ação usam amarelo ou fundo transparente, inclusive no mobile; o único botão com fundo azul nas telas principais auditadas é o controle institucional do menu. Internados/Todos alteram a lista real; Sem resultado mostra uma única ação de limpeza; Setembro Amarelo tem continuidade para Início; Recuperar senha no perfil orienta o usuário; triagem só oferece gravação a perfis autorizados; Retomar rascunho só aparece com anotação local preenchida. Itens de histórico e anexo de exemplo não aparecem como ações clínicas. Uma checagem de anotação detectou e corrigiu o estado de revisão antes de carregar o rascunho. A comparação com o Figma atual permanece pendente de acesso.

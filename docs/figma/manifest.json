@@ -1,0 +1,5468 @@
+{
+  "fileKey": "CIuyCGVPdM8SENYRHQ9eHh",
+  "pageId": "0:1",
+  "connection": "david",
+  "physicalScreenFrames": 105,
+  "canonicalScreens": 85,
+  "sourceLimit": "MCP Starter rate limit after hierarchy audit and seven detailed design contexts",
+  "screens": [
+    {
+      "figmaName": "Desktop / login / Login",
+      "nodeId": "1:1069",
+      "device": "desktop",
+      "slug": "login",
+      "title": "Login",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Input",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "senha",
+        "perfil",
+        "sessao",
+        "senha-enviada"
+      ],
+      "actions": [
+        {
+          "label": "Entrar",
+          "destination": "setembro"
+        },
+        {
+          "label": "Recuperar senha",
+          "destination": "senha"
+        }
+      ],
+      "actionDestinations": [
+        "setembro",
+        "senha"
+      ],
+      "equivalent": "1:7593",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / senha / Recuperar senha",
+      "nodeId": "1:1096",
+      "device": "desktop",
+      "slug": "senha",
+      "title": "Recuperar senha",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Input",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "login",
+        "perfil"
+      ],
+      "actions": [
+        {
+          "label": "Enviar instruções",
+          "destination": "senha-enviada"
+        },
+        {
+          "label": "Voltar ao login",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "senha-enviada",
+        "login"
+      ],
+      "equivalent": "1:7620",
+      "notes": "Referência histórica; recuperação de senha excluída do produto funcional."
+    },
+    {
+      "figmaName": "Desktop / setembro / Setembro Amarelo",
+      "nodeId": "1:1118",
+      "device": "desktop",
+      "slug": "setembro",
+      "title": "Setembro Amarelo",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "login"
+      ],
+      "actions": [
+        {
+          "label": "Continuar",
+          "destination": "inicio"
+        }
+      ],
+      "actionDestinations": [
+        "inicio"
+      ],
+      "equivalent": "1:7642",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / inicio / Início",
+      "nodeId": "1:1141",
+      "device": "desktop",
+      "slug": "inicio",
+      "title": "Início",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Card",
+        "Button/Primary",
+        "Button/Secondary",
+        "PatientRow"
+      ],
+      "entryFlow": [
+        "setembro"
+      ],
+      "actions": [
+        {
+          "label": "Localizar paciente",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Cirurgias",
+          "destination": "cirurgias"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "PatientRow",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes",
+        "enfermagem",
+        "cirurgias",
+        "exames",
+        "resumo"
+      ],
+      "equivalent": "1:7665",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / pacientes / Pacientes",
+      "nodeId": "1:1296",
+      "device": "desktop",
+      "slug": "pacientes",
+      "title": "Pacientes",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Search",
+        "Tab",
+        "Button/Primary",
+        "PatientRow"
+      ],
+      "entryFlow": [
+        "inicio",
+        "pacientes",
+        "sem-resultados",
+        "cadastro",
+        "permissao"
+      ],
+      "actions": [
+        {
+          "label": "Internados",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Todos",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Sem resultado",
+          "destination": "sem-resultados"
+        },
+        {
+          "label": "Cadastrar paciente",
+          "destination": "cadastro"
+        },
+        {
+          "label": "PatientRow",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes",
+        "sem-resultados",
+        "cadastro",
+        "resumo"
+      ],
+      "equivalent": "1:7763",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / sem-resultados / Busca sem resultados",
+      "nodeId": "1:1454",
+      "device": "desktop",
+      "slug": "sem-resultados",
+      "title": "Busca sem resultados",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Search",
+        "State",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "pacientes"
+      ],
+      "actions": [
+        {
+          "label": "Limpar busca",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Cadastrar paciente",
+          "destination": "cadastro"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes",
+        "cadastro"
+      ],
+      "equivalent": "1:7866",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / cadastro / Cadastro de paciente",
+      "nodeId": "1:1578",
+      "device": "desktop",
+      "slug": "cadastro",
+      "title": "Cadastro de paciente",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Input",
+        "Select",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "pacientes",
+        "sem-resultados",
+        "revisao-cadastro"
+      ],
+      "actions": [
+        {
+          "label": "Revisar cadastro",
+          "destination": "revisao-cadastro"
+        },
+        {
+          "label": "Cancelar",
+          "destination": "pacientes"
+        }
+      ],
+      "actionDestinations": [
+        "revisao-cadastro",
+        "pacientes"
+      ],
+      "equivalent": "1:7938",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / revisao-cadastro / Revisão do cadastro",
+      "nodeId": "1:1745",
+      "device": "desktop",
+      "slug": "revisao-cadastro",
+      "title": "Revisão do cadastro",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "cadastro"
+      ],
+      "actions": [
+        {
+          "label": "Confirmar cadastro",
+          "destination": "resumo"
+        },
+        {
+          "label": "Corrigir dados",
+          "destination": "cadastro"
+        }
+      ],
+      "actionDestinations": [
+        "resumo",
+        "cadastro"
+      ],
+      "equivalent": "1:8048",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / resumo / Prontuário",
+      "nodeId": "1:1885",
+      "device": "desktop",
+      "slug": "resumo",
+      "title": "Prontuário",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary",
+        "Vital",
+        "HistoryItem"
+      ],
+      "entryFlow": [
+        "inicio",
+        "pacientes",
+        "revisao-cadastro",
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "vazio",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Nova anotação",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Registrar sinais",
+          "destination": "registrar-sinais"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Documentos",
+          "destination": "documentos"
+        },
+        {
+          "label": "Admissão",
+          "destination": "admissao"
+        },
+        {
+          "label": "Procedimentos",
+          "destination": "procedimentos"
+        },
+        {
+          "label": "Cirurgias",
+          "destination": "cirurgia"
+        },
+        {
+          "label": "Saída hospitalar",
+          "destination": "saida"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "enfermagem"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "nova-anotacao",
+        "registrar-sinais",
+        "documentos",
+        "admissao",
+        "procedimentos",
+        "cirurgia",
+        "saida"
+      ],
+      "equivalent": "1:8133",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / identificacao / Identificação",
+      "nodeId": "1:2122",
+      "device": "desktop",
+      "slug": "identificacao",
+      "title": "Identificação",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Voltar ao resumo",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico"
+      ],
+      "equivalent": "1:8297",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / admissao / Admissão e internação",
+      "nodeId": "1:2310",
+      "device": "desktop",
+      "slug": "admissao",
+      "title": "Admissão e internação",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "historico"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Ver triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico"
+      ],
+      "equivalent": "1:8414",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / triagem / Triagem",
+      "nodeId": "1:2493",
+      "device": "desktop",
+      "slug": "triagem",
+      "title": "Triagem",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Input",
+        "Select",
+        "Vital",
+        "Button/Secondary",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Sinais vitais",
+          "destination": "sinais"
+        },
+        {
+          "label": "Ir para enfermagem",
+          "destination": "enfermagem"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "sinais"
+      ],
+      "equivalent": "1:8528",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / sinais / Sinais vitais",
+      "nodeId": "1:2747",
+      "device": "desktop",
+      "slug": "sinais",
+      "title": "Sinais vitais",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Vital",
+        "HistoryItem"
+      ],
+      "entryFlow": [
+        "triagem",
+        "sinais",
+        "historico",
+        "revisao-sinais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Registrar sinais vitais",
+          "destination": "registrar-sinais"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "sinais"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "sinais"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "registrar-sinais",
+        "sinais"
+      ],
+      "equivalent": "1:8710",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / registrar-sinais / Registrar sinais vitais",
+      "nodeId": "1:2973",
+      "device": "desktop",
+      "slug": "registrar-sinais",
+      "title": "Registrar sinais vitais",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Input",
+        "Select",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "sinais",
+        "revisao-sinais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Revisar valores",
+          "destination": "revisao-sinais"
+        },
+        {
+          "label": "Salvar rascunho",
+          "destination": "rascunho-salvo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "revisao-sinais",
+        "rascunho-salvo"
+      ],
+      "equivalent": "1:8868",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / anamnese / Anamnese",
+      "nodeId": "1:3168",
+      "device": "desktop",
+      "slug": "anamnese",
+      "title": "Anamnese",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Voltar ao resumo",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico"
+      ],
+      "equivalent": "1:8993",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / exame-fisico / Exame físico",
+      "nodeId": "1:3352",
+      "device": "desktop",
+      "slug": "exame-fisico",
+      "title": "Exame físico",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Textarea",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Voltar ao resumo",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico"
+      ],
+      "equivalent": "1:9111",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / exames / Exames solicitados",
+      "nodeId": "1:3538",
+      "device": "desktop",
+      "slug": "exames",
+      "title": "Exames solicitados",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "inicio",
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Solicitados",
+          "destination": "exames"
+        },
+        {
+          "label": "Resultados",
+          "destination": "resultado"
+        },
+        {
+          "label": "Abrir resultado",
+          "destination": "resultado"
+        },
+        {
+          "label": "Documentos",
+          "destination": "documentos"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "resultado",
+        "documentos"
+      ],
+      "equivalent": "1:9231",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / resultado / Resultado de exame",
+      "nodeId": "1:3708",
+      "device": "desktop",
+      "slug": "resultado",
+      "title": "Resultado de exame",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Attachment",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "exames",
+        "historico",
+        "documentos"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Voltar aos exames",
+          "destination": "exames"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico"
+      ],
+      "equivalent": "1:9342",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / prescricao / Prescrição",
+      "nodeId": "1:3893",
+      "device": "desktop",
+      "slug": "prescricao",
+      "title": "Prescrição",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Abrir checagem",
+          "destination": "checagem"
+        },
+        {
+          "label": "Ver documento",
+          "destination": "documentos"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "checagem",
+        "documentos"
+      ],
+      "equivalent": "1:9459",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / checagem / Checagem de medicação",
+      "nodeId": "1:4088",
+      "device": "desktop",
+      "slug": "checagem",
+      "title": "Checagem de medicação",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Select",
+        "Input",
+        "Radio",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "prescricao",
+        "revisao-checagem"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Revisar checagem",
+          "destination": "revisao-checagem"
+        },
+        {
+          "label": "Cancelar",
+          "destination": "prescricao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "revisao-checagem"
+      ],
+      "equivalent": "1:9599",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / enfermagem / Anotações de enfermagem",
+      "nodeId": "1:4283",
+      "device": "desktop",
+      "slug": "enfermagem",
+      "title": "Anotações de enfermagem",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary",
+        "NoteItem"
+      ],
+      "entryFlow": [
+        "inicio",
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Nova anotação",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Retomar rascunho",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Plantão atual",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Procedimentos realizados",
+          "destination": "procedimentos"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "nova-anotacao",
+        "procedimentos"
+      ],
+      "equivalent": "1:9725",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / nova-anotacao / Nova anotação",
+      "nodeId": "1:4460",
+      "device": "desktop",
+      "slug": "nova-anotacao",
+      "title": "Nova anotação",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Badge",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "enfermagem",
+        "revisar-anotacao",
+        "procedimentos",
+        "erro",
+        "offline",
+        "rascunho-salvo"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Revisar anotação",
+          "destination": "revisar-anotacao"
+        },
+        {
+          "label": "Salvar rascunho",
+          "destination": "rascunho-salvo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "revisar-anotacao",
+        "rascunho-salvo"
+      ],
+      "equivalent": "1:9836",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / revisar-anotacao / Revisar anotação",
+      "nodeId": "1:4642",
+      "device": "desktop",
+      "slug": "revisar-anotacao",
+      "title": "Revisar anotação",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "NoteItem",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "nova-anotacao"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Finalizar e voltar ao prontuário",
+          "destination": "resumo"
+        },
+        {
+          "label": "Voltar e editar",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "nova-anotacao"
+      ],
+      "equivalent": "1:9950",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / historico / Histórico cronológico",
+      "nodeId": "1:4825",
+      "device": "desktop",
+      "slug": "historico",
+      "title": "Histórico cronológico",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "HistoryItem"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Todos",
+          "destination": "historico"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "resultado"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "sinais"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "prescricao"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "admissao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "resultado",
+        "sinais",
+        "admissao"
+      ],
+      "equivalent": "1:10065",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / procedimentos / Procedimentos realizados",
+      "nodeId": "1:5047",
+      "device": "desktop",
+      "slug": "procedimentos",
+      "title": "Procedimentos realizados",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "enfermagem"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Registrar em nova anotação",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "nova-anotacao"
+      ],
+      "equivalent": "1:10221",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / cirurgias / Cirurgias",
+      "nodeId": "1:5212",
+      "device": "desktop",
+      "slug": "cirurgias",
+      "title": "Cirurgias",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Input",
+        "Select",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "inicio",
+        "cirurgia"
+      ],
+      "actions": [
+        {
+          "label": "Detalhes de Maria Oliveira",
+          "destination": "cirurgia"
+        }
+      ],
+      "actionDestinations": [
+        "cirurgia"
+      ],
+      "equivalent": "1:10327",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / cirurgia / Detalhes da cirurgia",
+      "nodeId": "1:5354",
+      "device": "desktop",
+      "slug": "cirurgia",
+      "title": "Detalhes da cirurgia",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Badge",
+        "Attachment",
+        "Textarea",
+        "Button/Secondary",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "cirurgias"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Attachment",
+          "destination": "documentos"
+        },
+        {
+          "label": "Voltar às cirurgias",
+          "destination": "cirurgias"
+        },
+        {
+          "label": "Prontuário",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "documentos",
+        "cirurgias"
+      ],
+      "equivalent": "1:10429",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / documentos / Documentos e anexos",
+      "nodeId": "1:5549",
+      "device": "desktop",
+      "slug": "documentos",
+      "title": "Documentos e anexos",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Select",
+        "Badge",
+        "Uploader",
+        "Attachment"
+      ],
+      "entryFlow": [
+        "resumo",
+        "exames",
+        "prescricao",
+        "cirurgia"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Attachment",
+          "destination": "resultado"
+        },
+        {
+          "label": "Attachment",
+          "destination": "resultado"
+        },
+        {
+          "label": "Attachment",
+          "destination": "resultado"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "resultado"
+      ],
+      "equivalent": "1:10555",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / saida / Alta, transferência e óbito",
+      "nodeId": "1:5764",
+      "device": "desktop",
+      "slug": "saida",
+      "title": "Alta, transferência e óbito",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Select",
+        "Input",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Revisar saída",
+          "destination": "revisao-saida"
+        },
+        {
+          "label": "Cancelar",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "revisao-saida"
+      ],
+      "equivalent": "1:10703",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / alergias / Alergias e riscos",
+      "nodeId": "1:5956",
+      "device": "desktop",
+      "slug": "alergias",
+      "title": "Alergias e riscos",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Voltar ao prontuário",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico"
+      ],
+      "equivalent": "1:10826",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / perfil / Perfil do profissional",
+      "nodeId": "1:6145",
+      "device": "desktop",
+      "slug": "perfil",
+      "title": "Perfil do profissional",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "configuracoes"
+      ],
+      "actions": [
+        {
+          "label": "Recuperar senha",
+          "destination": "senha"
+        },
+        {
+          "label": "Sair da conta",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "senha",
+        "login"
+      ],
+      "equivalent": "1:10946",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / configuracoes / Configurações",
+      "nodeId": "1:6274",
+      "device": "desktop",
+      "slug": "configuracoes",
+      "title": "Configurações",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "Select",
+        "Checkbox",
+        "Button/Secondary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Meu perfil",
+          "destination": "perfil"
+        }
+      ],
+      "actionDestinations": [
+        "perfil"
+      ],
+      "equivalent": "1:11020",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / erro / Erro ao salvar",
+      "nodeId": "1:6401",
+      "device": "desktop",
+      "slug": "erro",
+      "title": "Erro ao salvar",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Tentar novamente",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "nova-anotacao"
+      ],
+      "equivalent": "1:11095",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / vazio / Nenhum registro",
+      "nodeId": "1:6515",
+      "device": "desktop",
+      "slug": "vazio",
+      "title": "Nenhum registro",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Voltar ao prontuário",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "resumo"
+      ],
+      "equivalent": "1:11157",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / offline / Sem conexão",
+      "nodeId": "1:6629",
+      "device": "desktop",
+      "slug": "offline",
+      "title": "Sem conexão",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Tentar novamente",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "nova-anotacao"
+      ],
+      "equivalent": "1:11219",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / permissao / Sem permissão",
+      "nodeId": "1:6747",
+      "device": "desktop",
+      "slug": "permissao",
+      "title": "Sem permissão",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Voltar aos pacientes",
+          "destination": "pacientes"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes"
+      ],
+      "equivalent": "1:11285",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / sessao / Sessão expirada",
+      "nodeId": "1:6861",
+      "device": "desktop",
+      "slug": "sessao",
+      "title": "Sessão expirada",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Entrar novamente",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "login"
+      ],
+      "equivalent": "1:11347",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / login / Login",
+      "nodeId": "1:7593",
+      "device": "mobile",
+      "slug": "login",
+      "title": "Login",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Input",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "senha",
+        "perfil",
+        "sessao",
+        "senha-enviada"
+      ],
+      "actions": [
+        {
+          "label": "Entrar",
+          "destination": "setembro"
+        },
+        {
+          "label": "Recuperar senha",
+          "destination": "senha"
+        }
+      ],
+      "actionDestinations": [
+        "setembro",
+        "senha"
+      ],
+      "equivalent": "1:1069",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / senha / Recuperar senha",
+      "nodeId": "1:7620",
+      "device": "mobile",
+      "slug": "senha",
+      "title": "Recuperar senha",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Input",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "login",
+        "perfil"
+      ],
+      "actions": [
+        {
+          "label": "Enviar instruções",
+          "destination": "senha-enviada"
+        },
+        {
+          "label": "Voltar ao login",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "senha-enviada",
+        "login"
+      ],
+      "equivalent": "1:1096",
+      "notes": "Referência histórica; recuperação de senha excluída do produto funcional."
+    },
+    {
+      "figmaName": "Mobile / setembro / Setembro Amarelo",
+      "nodeId": "1:7642",
+      "device": "mobile",
+      "slug": "setembro",
+      "title": "Setembro Amarelo",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "login"
+      ],
+      "actions": [
+        {
+          "label": "Continuar",
+          "destination": "inicio"
+        }
+      ],
+      "actionDestinations": [
+        "inicio"
+      ],
+      "equivalent": "1:1118",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / inicio / Início",
+      "nodeId": "1:7665",
+      "device": "mobile",
+      "slug": "inicio",
+      "title": "Início",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Card",
+        "Button/Primary",
+        "Button/Secondary",
+        "PatientRow",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "setembro"
+      ],
+      "actions": [
+        {
+          "label": "Localizar paciente",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Cirurgias",
+          "destination": "cirurgias"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "PatientRow",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes",
+        "enfermagem",
+        "cirurgias",
+        "exames",
+        "resumo"
+      ],
+      "equivalent": "1:1141",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / pacientes / Pacientes",
+      "nodeId": "1:7763",
+      "device": "mobile",
+      "slug": "pacientes",
+      "title": "Pacientes",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Search",
+        "Tab",
+        "Button/Primary",
+        "PatientRow",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "inicio",
+        "pacientes",
+        "sem-resultados",
+        "cadastro",
+        "permissao"
+      ],
+      "actions": [
+        {
+          "label": "Internados",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Todos",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Sem resultado",
+          "destination": "sem-resultados"
+        },
+        {
+          "label": "Cadastrar paciente",
+          "destination": "cadastro"
+        },
+        {
+          "label": "PatientRow",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes",
+        "sem-resultados",
+        "cadastro",
+        "resumo"
+      ],
+      "equivalent": "1:1296",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / sem-resultados / Busca sem resultados",
+      "nodeId": "1:7866",
+      "device": "mobile",
+      "slug": "sem-resultados",
+      "title": "Busca sem resultados",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Search",
+        "State",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "pacientes"
+      ],
+      "actions": [
+        {
+          "label": "Limpar busca",
+          "destination": "pacientes"
+        },
+        {
+          "label": "Cadastrar paciente",
+          "destination": "cadastro"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes",
+        "cadastro"
+      ],
+      "equivalent": "1:1454",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / cadastro / Cadastro de paciente",
+      "nodeId": "1:7938",
+      "device": "mobile",
+      "slug": "cadastro",
+      "title": "Cadastro de paciente",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Input",
+        "Select",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "pacientes",
+        "sem-resultados",
+        "revisao-cadastro"
+      ],
+      "actions": [
+        {
+          "label": "Revisar cadastro",
+          "destination": "revisao-cadastro"
+        },
+        {
+          "label": "Cancelar",
+          "destination": "pacientes"
+        }
+      ],
+      "actionDestinations": [
+        "revisao-cadastro",
+        "pacientes"
+      ],
+      "equivalent": "1:1578",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / revisao-cadastro / Revisão do cadastro",
+      "nodeId": "1:8048",
+      "device": "mobile",
+      "slug": "revisao-cadastro",
+      "title": "Revisão do cadastro",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "cadastro"
+      ],
+      "actions": [
+        {
+          "label": "Confirmar cadastro",
+          "destination": "resumo"
+        },
+        {
+          "label": "Corrigir dados",
+          "destination": "cadastro"
+        }
+      ],
+      "actionDestinations": [
+        "resumo",
+        "cadastro"
+      ],
+      "equivalent": "1:1745",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / resumo / Prontuário",
+      "nodeId": "1:8133",
+      "device": "mobile",
+      "slug": "resumo",
+      "title": "Prontuário",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "Vital",
+        "HistoryItem",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "inicio",
+        "pacientes",
+        "revisao-cadastro",
+        "identificacao",
+        "anamnese",
+        "exame-fisico",
+        "revisar-anotacao",
+        "cirurgia",
+        "saida",
+        "alergias",
+        "vazio",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Nova anotação",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Registrar sinais",
+          "destination": "registrar-sinais"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Documentos",
+          "destination": "documentos"
+        },
+        {
+          "label": "Admissão",
+          "destination": "admissao"
+        },
+        {
+          "label": "Procedimentos",
+          "destination": "procedimentos"
+        },
+        {
+          "label": "Cirurgias",
+          "destination": "cirurgia"
+        },
+        {
+          "label": "Saída hospitalar",
+          "destination": "saida"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "enfermagem"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "nova-anotacao",
+        "registrar-sinais",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "documentos",
+        "admissao",
+        "procedimentos",
+        "cirurgia",
+        "saida"
+      ],
+      "equivalent": "1:1885",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / identificacao / Identificação",
+      "nodeId": "1:8297",
+      "device": "mobile",
+      "slug": "identificacao",
+      "title": "Identificação",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Voltar ao resumo",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "resumo"
+      ],
+      "equivalent": "1:2122",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / admissao / Admissão e internação",
+      "nodeId": "1:8414",
+      "device": "mobile",
+      "slug": "admissao",
+      "title": "Admissão e internação",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "historico",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Ver triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "triagem",
+        "historico"
+      ],
+      "equivalent": "1:2310",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / triagem / Triagem",
+      "nodeId": "1:8528",
+      "device": "mobile",
+      "slug": "triagem",
+      "title": "Triagem",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Input",
+        "Select",
+        "Vital",
+        "Button/Secondary",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "admissao",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Sinais vitais",
+          "destination": "sinais"
+        },
+        {
+          "label": "Ir para enfermagem",
+          "destination": "enfermagem"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "sinais",
+        "enfermagem"
+      ],
+      "equivalent": "1:2493",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / sinais / Sinais vitais",
+      "nodeId": "1:8710",
+      "device": "mobile",
+      "slug": "sinais",
+      "title": "Sinais vitais",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Vital",
+        "HistoryItem",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "triagem",
+        "sinais",
+        "historico",
+        "mais",
+        "revisao-sinais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Registrar sinais vitais",
+          "destination": "registrar-sinais"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "sinais"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "sinais"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "registrar-sinais",
+        "sinais"
+      ],
+      "equivalent": "1:2747",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / registrar-sinais / Registrar sinais vitais",
+      "nodeId": "1:8868",
+      "device": "mobile",
+      "slug": "registrar-sinais",
+      "title": "Registrar sinais vitais",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Input",
+        "Select",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "sinais",
+        "revisao-sinais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Revisar valores",
+          "destination": "revisao-sinais"
+        },
+        {
+          "label": "Salvar rascunho",
+          "destination": "rascunho-salvo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "revisao-sinais",
+        "rascunho-salvo"
+      ],
+      "equivalent": "1:2973",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / anamnese / Anamnese",
+      "nodeId": "1:8993",
+      "device": "mobile",
+      "slug": "anamnese",
+      "title": "Anamnese",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Voltar ao resumo",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "exame-fisico",
+        "resumo"
+      ],
+      "equivalent": "1:3168",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / exame-fisico / Exame físico",
+      "nodeId": "1:9111",
+      "device": "mobile",
+      "slug": "exame-fisico",
+      "title": "Exame físico",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Textarea",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "anamnese",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Voltar ao resumo",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "resumo"
+      ],
+      "equivalent": "1:3352",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / exames / Exames solicitados",
+      "nodeId": "1:9231",
+      "device": "mobile",
+      "slug": "exames",
+      "title": "Exames solicitados",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "inicio",
+        "resumo",
+        "exames",
+        "resultado",
+        "historico",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Solicitados",
+          "destination": "exames"
+        },
+        {
+          "label": "Resultados",
+          "destination": "resultado"
+        },
+        {
+          "label": "Abrir resultado",
+          "destination": "resultado"
+        },
+        {
+          "label": "Documentos",
+          "destination": "documentos"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "exames",
+        "resultado",
+        "documentos"
+      ],
+      "equivalent": "1:3538",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / resultado / Resultado de exame",
+      "nodeId": "1:9342",
+      "device": "mobile",
+      "slug": "resultado",
+      "title": "Resultado de exame",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Attachment",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "exames",
+        "historico",
+        "documentos"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Voltar aos exames",
+          "destination": "exames"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "exames"
+      ],
+      "equivalent": "1:3708",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / prescricao / Prescrição",
+      "nodeId": "1:9459",
+      "device": "mobile",
+      "slug": "prescricao",
+      "title": "Prescrição",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "checagem",
+        "historico",
+        "mais",
+        "revisao-checagem"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Abrir checagem",
+          "destination": "checagem"
+        },
+        {
+          "label": "Ver documento",
+          "destination": "documentos"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "checagem",
+        "documentos"
+      ],
+      "equivalent": "1:3893",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / checagem / Checagem de medicação",
+      "nodeId": "1:9599",
+      "device": "mobile",
+      "slug": "checagem",
+      "title": "Checagem de medicação",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Select",
+        "Input",
+        "Radio",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "prescricao",
+        "revisao-checagem"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Revisar checagem",
+          "destination": "revisao-checagem"
+        },
+        {
+          "label": "Cancelar",
+          "destination": "prescricao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "revisao-checagem",
+        "prescricao"
+      ],
+      "equivalent": "1:4088",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / enfermagem / Anotações de enfermagem",
+      "nodeId": "1:9725",
+      "device": "mobile",
+      "slug": "enfermagem",
+      "title": "Anotações de enfermagem",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "Tab",
+        "NoteItem",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "inicio",
+        "resumo",
+        "triagem",
+        "enfermagem",
+        "historico"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Nova anotação",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Retomar rascunho",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Plantão atual",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Procedimentos realizados",
+          "destination": "procedimentos"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "nova-anotacao",
+        "enfermagem",
+        "historico",
+        "procedimentos"
+      ],
+      "equivalent": "1:4283",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / nova-anotacao / Nova anotação",
+      "nodeId": "1:9836",
+      "device": "mobile",
+      "slug": "nova-anotacao",
+      "title": "Nova anotação",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Badge",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "enfermagem",
+        "revisar-anotacao",
+        "procedimentos",
+        "erro",
+        "offline",
+        "rascunho-salvo"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Revisar anotação",
+          "destination": "revisar-anotacao"
+        },
+        {
+          "label": "Salvar rascunho",
+          "destination": "rascunho-salvo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "revisar-anotacao",
+        "rascunho-salvo"
+      ],
+      "equivalent": "1:4460",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / revisar-anotacao / Revisar anotação",
+      "nodeId": "1:9950",
+      "device": "mobile",
+      "slug": "revisar-anotacao",
+      "title": "Revisar anotação",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "NoteItem",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "nova-anotacao"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Finalizar e voltar ao prontuário",
+          "destination": "resumo"
+        },
+        {
+          "label": "Voltar e editar",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "resumo",
+        "nova-anotacao"
+      ],
+      "equivalent": "1:4642",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / historico / Histórico cronológico",
+      "nodeId": "1:10065",
+      "device": "mobile",
+      "slug": "historico",
+      "title": "Histórico cronológico",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "HistoryItem",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "admissao",
+        "enfermagem",
+        "historico",
+        "procedimentos",
+        "mais",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Todos",
+          "destination": "historico"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "resultado"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "sinais"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "prescricao"
+        },
+        {
+          "label": "HistoryItem",
+          "destination": "admissao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "historico",
+        "enfermagem",
+        "exames",
+        "resultado",
+        "sinais",
+        "prescricao",
+        "admissao"
+      ],
+      "equivalent": "1:4825",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / procedimentos / Procedimentos realizados",
+      "nodeId": "1:10221",
+      "device": "mobile",
+      "slug": "procedimentos",
+      "title": "Procedimentos realizados",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "enfermagem",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Registrar em nova anotação",
+          "destination": "nova-anotacao"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "nova-anotacao",
+        "historico"
+      ],
+      "equivalent": "1:5047",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / cirurgias / Cirurgias",
+      "nodeId": "1:10327",
+      "device": "mobile",
+      "slug": "cirurgias",
+      "title": "Cirurgias",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Input",
+        "Select",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "inicio",
+        "cirurgia",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Detalhes de Maria Oliveira",
+          "destination": "cirurgia"
+        }
+      ],
+      "actionDestinations": [
+        "cirurgia"
+      ],
+      "equivalent": "1:5212",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / cirurgia / Detalhes da cirurgia",
+      "nodeId": "1:10429",
+      "device": "mobile",
+      "slug": "cirurgia",
+      "title": "Detalhes da cirurgia",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Badge",
+        "Attachment",
+        "Textarea",
+        "Button/Secondary",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "cirurgias"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Attachment",
+          "destination": "documentos"
+        },
+        {
+          "label": "Voltar às cirurgias",
+          "destination": "cirurgias"
+        },
+        {
+          "label": "Prontuário",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "documentos",
+        "cirurgias",
+        "resumo"
+      ],
+      "equivalent": "1:5354",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / documentos / Documentos e anexos",
+      "nodeId": "1:10555",
+      "device": "mobile",
+      "slug": "documentos",
+      "title": "Documentos e anexos",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Select",
+        "Badge",
+        "Uploader",
+        "Attachment",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "exames",
+        "prescricao",
+        "cirurgia",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Attachment",
+          "destination": "resultado"
+        },
+        {
+          "label": "Attachment",
+          "destination": "resultado"
+        },
+        {
+          "label": "Attachment",
+          "destination": "resultado"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "resultado"
+      ],
+      "equivalent": "1:5549",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / saida / Alta, transferência e óbito",
+      "nodeId": "1:10703",
+      "device": "mobile",
+      "slug": "saida",
+      "title": "Alta, transferência e óbito",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Select",
+        "Input",
+        "Textarea",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "mais",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Revisar saída",
+          "destination": "revisao-saida"
+        },
+        {
+          "label": "Cancelar",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "revisao-saida",
+        "resumo"
+      ],
+      "equivalent": "1:5764",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / alergias / Alergias e riscos",
+      "nodeId": "1:10826",
+      "device": "mobile",
+      "slug": "alergias",
+      "title": "Alergias e riscos",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Voltar ao prontuário",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "resumo"
+      ],
+      "equivalent": "1:5956",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / perfil / Perfil do profissional",
+      "nodeId": "1:10946",
+      "device": "mobile",
+      "slug": "perfil",
+      "title": "Perfil do profissional",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "configuracoes",
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Recuperar senha",
+          "destination": "senha"
+        },
+        {
+          "label": "Sair da conta",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "senha",
+        "login"
+      ],
+      "equivalent": "1:6145",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / configuracoes / Configurações",
+      "nodeId": "1:11020",
+      "device": "mobile",
+      "slug": "configuracoes",
+      "title": "Configurações",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Select",
+        "Checkbox",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "mais"
+      ],
+      "actions": [
+        {
+          "label": "Meu perfil",
+          "destination": "perfil"
+        }
+      ],
+      "actionDestinations": [
+        "perfil"
+      ],
+      "equivalent": "1:6274",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / erro / Erro ao salvar",
+      "nodeId": "1:11095",
+      "device": "mobile",
+      "slug": "erro",
+      "title": "Erro ao salvar",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Tentar novamente",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "nova-anotacao"
+      ],
+      "equivalent": "1:6401",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / vazio / Nenhum registro",
+      "nodeId": "1:11157",
+      "device": "mobile",
+      "slug": "vazio",
+      "title": "Nenhum registro",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Voltar ao prontuário",
+          "destination": "resumo"
+        }
+      ],
+      "actionDestinations": [
+        "resumo"
+      ],
+      "equivalent": "1:6515",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / offline / Sem conexão",
+      "nodeId": "1:11219",
+      "device": "mobile",
+      "slug": "offline",
+      "title": "Sem conexão",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Tentar novamente",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "nova-anotacao"
+      ],
+      "equivalent": "1:6629",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / permissao / Sem permissão",
+      "nodeId": "1:11285",
+      "device": "mobile",
+      "slug": "permissao",
+      "title": "Sem permissão",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Voltar aos pacientes",
+          "destination": "pacientes"
+        }
+      ],
+      "actionDestinations": [
+        "pacientes"
+      ],
+      "equivalent": "1:6747",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / sessao / Sessão expirada",
+      "nodeId": "1:11347",
+      "device": "mobile",
+      "slug": "sessao",
+      "title": "Sessão expirada",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [],
+      "actions": [
+        {
+          "label": "Entrar novamente",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "login"
+      ],
+      "equivalent": "1:6861",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / mais / Mais",
+      "nodeId": "1:11369",
+      "device": "mobile",
+      "slug": "mais",
+      "title": "Mais",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "registrar-sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "resultado",
+        "prescricao",
+        "checagem",
+        "enfermagem",
+        "nova-anotacao",
+        "revisar-anotacao",
+        "historico",
+        "procedimentos",
+        "cirurgia",
+        "documentos",
+        "saida",
+        "alergias",
+        "rascunho-salvo",
+        "revisao-sinais",
+        "revisao-checagem",
+        "revisao-saida"
+      ],
+      "actions": [
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Admissão",
+          "destination": "admissao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Sinais vitais",
+          "destination": "sinais"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Procedimentos",
+          "destination": "procedimentos"
+        },
+        {
+          "label": "Cirurgias",
+          "destination": "cirurgias"
+        },
+        {
+          "label": "Documentos",
+          "destination": "documentos"
+        },
+        {
+          "label": "Saída hospitalar",
+          "destination": "saida"
+        },
+        {
+          "label": "Meu perfil",
+          "destination": "perfil"
+        },
+        {
+          "label": "Configurações",
+          "destination": "configuracoes"
+        }
+      ],
+      "actionDestinations": [
+        "resumo",
+        "identificacao",
+        "admissao",
+        "triagem",
+        "sinais",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "historico",
+        "procedimentos",
+        "cirurgias",
+        "documentos",
+        "saida",
+        "perfil",
+        "configuracoes"
+      ],
+      "equivalent": null,
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / senha-enviada / Instruções de recuperação",
+      "nodeId": "1:6883",
+      "device": "desktop",
+      "slug": "senha-enviada",
+      "title": "Instruções de recuperação",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "senha"
+      ],
+      "actions": [
+        {
+          "label": "Voltar ao login",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "login"
+      ],
+      "equivalent": "1:11453",
+      "notes": "Referência histórica; recuperação de senha excluída do produto funcional."
+    },
+    {
+      "figmaName": "Desktop / rascunho-salvo / Rascunho salvo",
+      "nodeId": "1:6904",
+      "device": "desktop",
+      "slug": "rascunho-salvo",
+      "title": "Rascunho salvo",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Toast",
+        "Card",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "registrar-sinais",
+        "nova-anotacao"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Retomar anotação",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "nova-anotacao"
+      ],
+      "equivalent": "1:11474",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / revisao-sinais / Revisar sinais vitais",
+      "nodeId": "1:7063",
+      "device": "desktop",
+      "slug": "revisao-sinais",
+      "title": "Revisar sinais vitais",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "registrar-sinais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Confirmar registro",
+          "destination": "sinais"
+        },
+        {
+          "label": "Corrigir valores",
+          "destination": "registrar-sinais"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "sinais",
+        "registrar-sinais"
+      ],
+      "equivalent": "1:11567",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / revisao-checagem / Revisar checagem",
+      "nodeId": "1:7243",
+      "device": "desktop",
+      "slug": "revisao-checagem",
+      "title": "Revisar checagem",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "checagem"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Confirmar checagem",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Corrigir registro",
+          "destination": "checagem"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "checagem"
+      ],
+      "equivalent": "1:11677",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Desktop / revisao-saida / Revisar saída hospitalar",
+      "nodeId": "1:7413",
+      "device": "desktop",
+      "slug": "revisao-saida",
+      "title": "Revisar saída hospitalar",
+      "dimensions": {
+        "width": 1440,
+        "height": 1024
+      },
+      "mainComponents": [
+        "Sidebar",
+        "PatientHeader",
+        "Alert",
+        "Tab",
+        "Button/Primary",
+        "Button/Secondary"
+      ],
+      "entryFlow": [
+        "saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Resumo",
+          "destination": "resumo"
+        },
+        {
+          "label": "Identificação",
+          "destination": "identificacao"
+        },
+        {
+          "label": "Triagem",
+          "destination": "triagem"
+        },
+        {
+          "label": "Anamnese",
+          "destination": "anamnese"
+        },
+        {
+          "label": "Exame físico",
+          "destination": "exame-fisico"
+        },
+        {
+          "label": "Exames",
+          "destination": "exames"
+        },
+        {
+          "label": "Prescrição",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Enfermagem",
+          "destination": "enfermagem"
+        },
+        {
+          "label": "Histórico",
+          "destination": "historico"
+        },
+        {
+          "label": "Confirmar saída",
+          "destination": "historico"
+        },
+        {
+          "label": "Voltar e corrigir",
+          "destination": "saida"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "resumo",
+        "identificacao",
+        "triagem",
+        "anamnese",
+        "exame-fisico",
+        "exames",
+        "prescricao",
+        "enfermagem",
+        "historico",
+        "saida"
+      ],
+      "equivalent": "1:11778",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / senha-enviada / Instruções de recuperação",
+      "nodeId": "1:11453",
+      "device": "mobile",
+      "slug": "senha-enviada",
+      "title": "Instruções de recuperação",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "State",
+        "Button/Primary"
+      ],
+      "entryFlow": [
+        "senha"
+      ],
+      "actions": [
+        {
+          "label": "Voltar ao login",
+          "destination": "login"
+        }
+      ],
+      "actionDestinations": [
+        "login"
+      ],
+      "equivalent": "1:6883",
+      "notes": "Referência histórica; recuperação de senha excluída do produto funcional."
+    },
+    {
+      "figmaName": "Mobile / rascunho-salvo / Rascunho salvo",
+      "nodeId": "1:11474",
+      "device": "mobile",
+      "slug": "rascunho-salvo",
+      "title": "Rascunho salvo",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Toast",
+        "Card",
+        "Button/Primary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "registrar-sinais",
+        "nova-anotacao"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Retomar anotação",
+          "destination": "nova-anotacao"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "nova-anotacao"
+      ],
+      "equivalent": "1:6904",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / revisao-sinais / Revisar sinais vitais",
+      "nodeId": "1:11567",
+      "device": "mobile",
+      "slug": "revisao-sinais",
+      "title": "Revisar sinais vitais",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "registrar-sinais"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Confirmar registro",
+          "destination": "sinais"
+        },
+        {
+          "label": "Corrigir valores",
+          "destination": "registrar-sinais"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "sinais",
+        "registrar-sinais"
+      ],
+      "equivalent": "1:7063",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / revisao-checagem / Revisar checagem",
+      "nodeId": "1:11677",
+      "device": "mobile",
+      "slug": "revisao-checagem",
+      "title": "Revisar checagem",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "checagem"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Confirmar checagem",
+          "destination": "prescricao"
+        },
+        {
+          "label": "Corrigir registro",
+          "destination": "checagem"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "prescricao",
+        "checagem"
+      ],
+      "equivalent": "1:7243",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    },
+    {
+      "figmaName": "Mobile / revisao-saida / Revisar saída hospitalar",
+      "nodeId": "1:11778",
+      "device": "mobile",
+      "slug": "revisao-saida",
+      "title": "Revisar saída hospitalar",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "mainComponents": [
+        "PatientHeader",
+        "Alert",
+        "Button/Primary",
+        "Button/Secondary",
+        "BottomNavigation"
+      ],
+      "entryFlow": [
+        "saida"
+      ],
+      "actions": [
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Alert",
+          "destination": "alergias"
+        },
+        {
+          "label": "Escolher seção",
+          "destination": "mais"
+        },
+        {
+          "label": "Confirmar saída",
+          "destination": "historico"
+        },
+        {
+          "label": "Voltar e corrigir",
+          "destination": "saida"
+        }
+      ],
+      "actionDestinations": [
+        "alergias",
+        "mais",
+        "historico",
+        "saida"
+      ],
+      "equivalent": "1:7413",
+      "notes": "A hierarquia foi confirmada nos metadados do Figma. Ações e componentes foram complementados pelo pacote local anterior; conferir no Figma atual quando disponível."
+    }
+  ]
+}

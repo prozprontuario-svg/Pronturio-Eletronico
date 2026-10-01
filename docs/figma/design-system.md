@@ -1,0 +1,9 @@
+# Design system
+
+Consolidação local de 01/10/2026: tokens de cor permanecem centralizados em `app/globals.css`; amarelo `#FFEA94` é a cor principal da interface e a sidebar usa esse mesmo valor. O azul-petróleo fica em detalhes pontuais, incluindo o cabeçalho que envolve a marca e o controle de menu. Botões principais têm fundo amarelo sem borda; abas selecionadas ficam com texto e ícone vermelhos em fundo transparente. O menu compacto permanece compacto durante a navegação. Em ambos os estados da sidebar, texto e ícone do item ativo ficam vermelhos, sem fundo nem contorno; a logo do cabeçalho tem 40 px de altura. Botões têm 44 px; alvos do menu compacto mantêm 56 px. Layout mobile usa topbar, rolagem interna e bottom navigation fixa; cards de sinais vitais exibem apenas dados confirmados do paciente. A logo oficial em `public/brand/proz-saude.png` substitui as representações antigas. Estes pontos são decisões locais posteriores ao inventário do Figma, não novos dados do Figma.
+
+Foundations do Figma: `brand #0B4352`, `brand-dark #07333F`, `yellow-soft #FFF7D6`, `yellow #F2D667`, `white #FFFFFF`, `background #F5F7F7`, `text #171A1C`, `muted #667075`, `border #DDE3E5`, `brand-soft #EAF1F3`, `allergy #A6222F`, `allergy-soft #FDEFF0`, `amber #785810`, `success #276253`, `disabled #EDF0F1`.
+
+Foundations registra Arial como substituta visual legível à Inter. Escala: título 28 px bold, seção 20 px bold, texto 14 px, rótulo 13 px bold, metadado 12 px. Espaçamentos: 4, 8, 12, 16, 20, 24, 32 px. Botões: 44 px. Controles: raio 6 px; cards: 8 px. Ícones Lucide com traço aproximado de 1,75 px. Sem sombras decorativas.
+
+Contextos atuais obtidos no MCP mostram algumas alterações locais de cores, como sidebar amarela no desktop, em contraste com o pacote local anterior. Até nova consulta, esses contextos atuais prevalecem nos componentes observados.

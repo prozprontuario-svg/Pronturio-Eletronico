@@ -1,3 +1,11 @@
 node_modules/
 .wrangler/
 .npm-cache/
+.next/
+.env.local
+.env.*.local
+.dev.vars
+data/
+uploads/
+*.tsbuildinfo
+.playwright-mcp/
