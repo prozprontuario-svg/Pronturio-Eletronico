@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "proz-saude-preview",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./Proz-Saude/Preview",
+    "html_handling": "auto-trailing-slash"
+  }
+}

@@ -22,8 +22,9 @@
   };
   const required = ['name', 'birthDate', 'sex', 'document', 'motherName'];
   const emptyForm = () => ({
-    name: '', birthDate: '', sex: '', document: '', motherName: '', fatherName: '',
-    phone: '', postalCode: '', address: '', cityState: ''
+    name: 'Pessoa de demonstração', birthDate: '01/01/1990', sex: 'Não informado',
+    document: 'DEMO-0001', motherName: 'Pessoa fictícia', fatherName: '',
+    phone: '', postalCode: '', address: 'Endereço fictício', cityState: 'Município fictício / UF'
   });
   const scene = document.querySelector('.scene');
   const viewport = document.querySelector('.viewport');
@@ -32,7 +33,7 @@
   let device = 'Desktop';
   let key = 'inicio';
   let form = emptyForm();
-  let patients = loadPatients();
+  let patients = [];
   let searchText = '';
   let toastTimer;
   const patientTemplates = new Map(DATA.screens
@@ -41,12 +42,7 @@
 
   function copy(value) { return JSON.parse(JSON.stringify(value)); }
 
-  function loadPatients() {
-    try {
-      const value = JSON.parse(localStorage.getItem(STORE) || '[]');
-      return Array.isArray(value) ? value.filter((patient) => patient && patient.id && patient.name) : [];
-    } catch { return []; }
-  }
+  try { localStorage.removeItem(STORE); } catch {}
 
   function find(root, predicate) {
     if (predicate(root)) return root;
@@ -91,6 +87,11 @@
     input.style.width = node._w + 'px';
     input.style.height = node._h + 'px';
     input.dataset.formKey = field;
+    input.autocomplete = 'off';
+    input.style.opacity = '1';
+    input.style.cursor = 'not-allowed';
+    if (isSex) input.disabled = true;
+    else input.readOnly = true;
     input.setAttribute('aria-label', isSearch ? 'Buscar paciente por nome, prontuário ou documento' : labels[field]);
     if (isSearch) {
       input.type = 'search';
@@ -202,11 +203,7 @@
   }
 
   function collectForm() {
-    for (const name of Object.keys(labels)) {
-      const input = scene.querySelector('[data-form-key="' + name + '"]');
-      if (input) form[name] = input.value.trim();
-    }
-    form.birthDate = validDate(form.birthDate) || form.birthDate;
+    form = emptyForm();
   }
 
   function validate() {
@@ -287,14 +284,12 @@
     }
     const patient = { ...form, id: patientId(), createdAt: new Date().toISOString() };
     patients.unshift(patient);
-    let saved = true;
-    try { localStorage.setItem(STORE, JSON.stringify(patients)); } catch { saved = false; }
     form = emptyForm();
     searchText = '';
     preparePatients();
     key = 'pacientes';
     render();
-    toast('Cadastro confirmado. Prontuário ' + patient.id + '. ' + (saved ? 'Dados guardados neste navegador.' : 'Dados disponíveis até fechar esta página.'));
+    toast('Simulação concluída com dados fictícios. Nada foi armazenado.');
   }
 
   function updatePatientRows(template, patient, y) {
@@ -336,36 +331,19 @@
       content.children.splice(content.children.indexOf(rows[0]), 0, ...inserted);
       content._h += shift;
       const note = find(content, (node) => node.kind === 'text' && (node.text || '').startsWith('Exibindo'));
-      if (note) changeText(note, '3 pacientes de demonstração • ' + patients.length + ' cadastro(s) local(is)');
+      if (note) changeText(note, 'Pacientes e cadastros desta tela s\u00e3o fict\u00edcios e n\u00e3o s\u00e3o armazenados.');
     }
   }
 
   function prepareRegistration() {
     for (const screen of DATA.screens.filter((item) => item.key === 'cadastro')) {
       const note = find(screen.resolved, (node) => node.kind === 'text' && node.name === 'O prontuário é gerado automaticamente ao confirmar.');
-      if (note) changeText(note, 'Demonstração local: os dados ficam salvos neste navegador.');
+      if (note) changeText(note, 'Demonstração: campos bloqueados e preenchidos apenas com dados fictícios.');
     }
   }
 
   function bindInputs() {
-    for (const input of scene.querySelectorAll('[data-form-key]')) {
-      const name = input.dataset.formKey;
-      if (name === 'search') {
-        input.addEventListener('input', filterPatients);
-        continue;
-      }
-      input.addEventListener('input', () => {
-        form[name] = input.value;
-        input.setCustomValidity('');
-        input.setAttribute('aria-invalid', 'false');
-        const parent = input.parentElement;
-        if (parent && parent.dataset.name === 'Control') { parent.style.borderColor = ''; parent.style.outline = ''; }
-      });
-      input.addEventListener('change', () => { form[name] = input.value; });
-      input.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' && input.tagName !== 'SELECT') { event.preventDefault(); reviewRegistration(); }
-      });
-    }
+    // Os campos desta demonstração são fictícios, bloqueados e não aceitam dados digitados.
   }
 
   function filterPatients() {

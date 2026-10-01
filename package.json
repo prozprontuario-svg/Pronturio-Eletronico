@@ -4,6 +4,10 @@
   "private": true,
   "description": "Servidor local para a prévia navegável do pacote Proz Saúde",
   "scripts": {
-    "dev": "node dev-server.cjs"
+    "dev": "node dev-server.cjs",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.143.0"
   }
 }
