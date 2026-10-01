@@ -6,9 +6,10 @@ Isso explica por que o endereço do Cloudflare abria a demonstração visual.
 
 Este repositório agora contém a aplicação real na raiz: `app/`, `components/`,
 `lib/`, `prisma/` e `public/`. Os comandos `dev`, `build` e `start` usam Next.js.
-Os arquivos de `Proz-Saude/Preview` permanecem como referência histórica e não
-são servidos por esses comandos. O servidor estático e a configuração Wrangler
-que publicavam a prévia foram removidos.
+Os arquivos de `Proz-Saude/Preview` foram removidos: não há mais página de
+demonstração, seletor de telas ou alternância manual entre desktop e celular.
+O servidor estático e a configuração Wrangler que publicavam a prévia também
+foram removidos. A entrada do sistema é o login em `/`.
 
 ## Execução local
 
