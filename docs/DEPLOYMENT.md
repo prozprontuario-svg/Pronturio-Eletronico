@@ -26,6 +26,26 @@ a implementação real do prontuário.
 
 ## Limite do Cloudflare
 
+### Falha de publicação de 01/10/2026 — código 10143
+
+O log do commit `0206a77` mostra que o build Next.js e o build OpenNext
+terminaram, mas a publicação foi recusada: `WORKER_SELF_REFERENCE` apontava
+para `proz-saude-local`, enquanto o Worker existente era `pronturio-eletronico`.
+Sem uma configuração versionada do adaptador, o comando `npx wrangler deploy`
+executou a migração automática; OpenNext usou o campo `name` de `package.json`
+para gerar o nome do serviço. O nome do pacote e o lockfile agora usam
+`pronturio-eletronico`, alinhado ao Worker do painel, para corrigir essa
+referência na próxima geração. Não renomear esse pacote sem revisar a
+configuração gerada do Cloudflare.
+
+Essa correção trata a falha de referência do serviço. Não constitui validação
+do runtime, da autenticação ou da persistência no Cloudflare. Os requisitos
+de adaptação do banco e dos anexos continuam descritos abaixo. As credenciais
+de `.env.local` não são enviadas ao GitHub nem configuradas por esta mudança.
+
+Referências: [geração do nome pelo OpenNext](https://github.com/opennextjs/opennextjs-cloudflare/blob/main/packages/cloudflare/src/cli/utils/create-wrangler-config.ts)
+e [configuração de WORKER_SELF_REFERENCE](https://opennext.js.org/cloudflare/get-started).
+
 A aplicação depende de Node.js 24, SQLite/Prisma e armazenamento no disco.
 O build Next.js não é um diretório estático que possa substituir `Preview`
 no Wrangler. Servir o sistema em Workers exige adaptar o runtime e a
