@@ -3,7 +3,7 @@ import { redirect, notFound } from "next/navigation";
 import { SESSION_COOKIE, userFromToken } from "@/lib/auth";
 import { type Patient } from "@/lib/db";
 import { getScreens, isScreen } from "@/lib/design";
-import { patientFromPrisma, prisma, recordFromPrisma } from "@/lib/prisma";
+import { patientFrom, store, recordFrom } from "@/lib/json-db";
 import { DesignScreen } from "@/components/DesignScreen";
 import { AdminPanel } from "@/components/AdminPanel";
 import { patientSections } from "@/lib/navigation";
@@ -32,7 +32,7 @@ export default async function AppScreen({ params, searchParams }: {
   const { patient: requested, abrir, filter } = await searchParams;
   const openSection = abrir && patientSections.has(abrir) ? abrir : undefined;
   if (!requested && patientSections.has(slug)) redirect("/app/pacientes");
-  const database = await prisma();
+  const database = await store();
   // Cada tela consulta apenas os dados que apresenta. A seleção do paciente
   // continua validada mesmo quando o módulo não precisa carregar seus registros.
   const [patientRows, selectedPatient, counts, surgeryRows] = await Promise.all([
@@ -47,16 +47,16 @@ export default async function AppScreen({ params, searchParams }: {
     slug === "cirurgias" ? database.clinicalRecord.findMany({where:{type:"cirurgia",status:"confirmed"},
       include:{patient:true},orderBy:{createdAt:"asc"}}) : Promise.resolve([]),
   ]);
-  const patients: Patient[] = patientRows.map(patientFromPrisma)
-    .sort((a,b)=>a.id==="pac-maria"?-1:b.id==="pac-maria"?1:a.name.localeCompare(b.name));
+  const patients: Patient[] = patientRows.map(patientFrom)
+    .sort((a: Patient,b: Patient)=>a.id==="pac-maria"?-1:b.id==="pac-maria"?1:a.name.localeCompare(b.name));
   if (requested && !selectedPatient) redirect("/app/pacientes");
-  const patient = selectedPatient ? patientFromPrisma(selectedPatient) : null;
+  const patient = selectedPatient ? patientFrom(selectedPatient) : null;
   const records = patient && patientSections.has(slug)
     ? (await database.clinicalRecord.findMany({where:{patientId:patient.id},include:{author:{select:{name:true}}},orderBy:{createdAt:"desc"},take:100}))
-      .map((row) => ({ ...recordFromPrisma(row), author_name:row.author.name, data: JSON.parse(row.data) as Record<string,string> }))
+      .map((row: any) => ({ ...recordFrom(row), author_name:row.author.name, data: JSON.parse(row.data) as Record<string,string> }))
     : [];
   const stats = {admitted:counts[0], drafts:counts[1], surgeries:counts[2]};
-  const surgeries = surgeryRows.map((row)=>({id:row.id,patient:patientFromPrisma(row.patient),data:JSON.parse(row.data) as Record<string,string>}));
+  const surgeries = surgeryRows.map((row: any)=>({id:row.id,patient:patientFrom(row.patient),data:JSON.parse(row.data) as Record<string,string>}));
   const reviewSource: Record<string,string> = {
     "revisao-cadastro":"cadastro", "revisar-anotacao":"nova-anotacao", "revisao-sinais":"registrar-sinais",
     "revisao-checagem":"checagem", "revisao-saida":"saida",

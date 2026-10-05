@@ -1,12 +1,13 @@
 node_modules/
 .wrangler/
+.open-next/
 .npm-cache/
 .next/
-.open-next/
 .env.local
 .env.*.local
 .dev.vars
 data/
 uploads/
+*.tmp
 *.tsbuildinfo
 .playwright-mcp/

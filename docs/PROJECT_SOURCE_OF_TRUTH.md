@@ -31,7 +31,7 @@ Esta é a referência operacional temporária para continuar o produto em localh
 
 ## Acesso, administração e segurança
 
-- Autenticação local, senha com hash, sessão protegida, autorização e validação no servidor, persistência SQLite/Prisma e auditoria permanecem ativos. Não usar serviços externos nem fazer deploy.
+- Autenticação local, senha com hash, sessão protegida, autorização e validação no servidor, persistência em JSON local e auditoria permanecem ativos. Não usar serviços externos nem fazer deploy.
 - Perfis atuais: administrador (único, definido em `.env.local`, só painel de contas), enfermeiro, técnico de enfermagem e médico. Não existem usuários pré-cadastrados nem tela de configuração inicial. Permissões clínicas são verificadas na API; ações sem permissão devem oferecer leitura ou indicar claramente a restrição na interface.
 - O painel ADM serve apenas para contas de acesso (CRUD completo das contas assistenciais). Excluir só é permitido para contas sem registros clínicos; as demais são desativadas. Mudança de senha, perfil, e-mail ou desativação encerra as sessões abertas. Apenas administrador entra. Não acrescentar funções clínicas ao painel.
 - `Esqueceu a senha?` é apenas um controle visual. Pode orientar a procurar o administrador; não existem recuperação, e-mail, token, código, redefinição ou rota funcional.

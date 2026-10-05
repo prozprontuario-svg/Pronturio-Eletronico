@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
 import { canWrite, clinicalDenied, clinicalUser, sameOrigin } from "@/lib/auth";
 import { clinicalTypes, safeText } from "@/lib/validation";
-import { prisma, recordFromPrisma } from "@/lib/prisma";
+import { store, recordFrom } from "@/lib/json-db";
 import { withApiErrors } from "@/lib/api";
 
 export const runtime = "nodejs";
@@ -11,12 +11,12 @@ export const GET = withApiErrors(async (request: NextRequest) => {
   if (!user) return clinicalDenied(status);
   const patientId = safeText(request.nextUrl.searchParams.get("patient"), 100);
   const type = safeText(request.nextUrl.searchParams.get("type"), 50);
-  if (!(await (await prisma()).patient.findUnique({where:{id:patientId},select:{id:true}})))
+  if (!(await (await store()).patient.findUnique({where:{id:patientId},select:{id:true}})))
     return NextResponse.json({ error: "Paciente não encontrado." }, { status: 404 });
   const rows = type && clinicalTypes.has(type)
-    ? await (await prisma()).clinicalRecord.findMany({where:{patientId,type},orderBy:{createdAt:"desc"}})
-    : await (await prisma()).clinicalRecord.findMany({where:{patientId},orderBy:{createdAt:"desc"}});
-  return NextResponse.json(rows.map((row) => ({ ...recordFromPrisma(row), data: JSON.parse(row.data) })));
+    ? await (await store()).clinicalRecord.findMany({where:{patientId,type},orderBy:{createdAt:"desc"}})
+    : await (await store()).clinicalRecord.findMany({where:{patientId},orderBy:{createdAt:"desc"}});
+  return NextResponse.json(rows.map((row: any) => ({ ...recordFrom(row), data: JSON.parse(row.data) })));
 });
 export const POST = withApiErrors(async (request: NextRequest) => {
   const { user, status: denied } = await clinicalUser(request);
@@ -25,7 +25,7 @@ export const POST = withApiErrors(async (request: NextRequest) => {
   const body = await request.json().catch(() => ({}));
   const patientId = safeText(body.patientId, 100);
   const type = safeText(body.type, 50);
-  if (!(await (await prisma()).patient.findUnique({where:{id:patientId},select:{id:true}})) || !clinicalTypes.has(type))
+  if (!(await (await store()).patient.findUnique({where:{id:patientId},select:{id:true}})) || !clinicalTypes.has(type))
     return NextResponse.json({ error: "Paciente ou tipo inválido." }, { status: 400 });
   if (!canWrite(user.role, type)) return NextResponse.json({ error: "Sem permissão para registrar nesta área." }, { status: 403 });
   if (!body.data || typeof body.data !== "object" || Array.isArray(body.data))
@@ -40,7 +40,7 @@ export const POST = withApiErrors(async (request: NextRequest) => {
   const status = body.status === "draft" ? "draft" : "confirmed";
   const id = randomUUID();
   const now = new Date().toISOString();
-  await (await prisma()).$transaction(async (tx) => {
+  await (await store()).$transaction(async (tx: any) => {
     await tx.clinicalRecord.create({data:{
       id,patientId,type,data:JSON.stringify(data),status,authorId:user.id,createdAt:now,updatedAt:now,
     }});

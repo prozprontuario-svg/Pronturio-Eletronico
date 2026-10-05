@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSession, removeSession, requestUser, sameOrigin, SESSION_COOKIE, syncConfiguredAdmin, verifyPassword } from "@/lib/auth";
 import { safeText } from "@/lib/validation";
-import { prisma } from "@/lib/prisma";
+import { store } from "@/lib/json-db";
 import { withApiErrors } from "@/lib/api";
 
 export const runtime = "nodejs";
@@ -13,10 +13,11 @@ export const GET = withApiErrors(async (request: NextRequest) => {
 export const POST = withApiErrors(async (request: NextRequest) => {
   if (!sameOrigin(request)) return NextResponse.json({ error: "Origem inválida." }, { status: 403 });
   const body = await request.json().catch(() => ({}));
+  if (!body || typeof body !== "object" || Array.isArray(body)) return NextResponse.json({ error: "Corpo JSON inváido." }, { status: 400 });
   const email = safeText(body.email, 254).toLowerCase();
   const password = typeof body.password === "string" ? body.password : "";
   await syncConfiguredAdmin();
-  const user = await (await prisma()).user.findUnique({where:{email}});
+  const user = await (await store()).user.findUnique({where:{email}});
   if (!user || !user.active || !verifyPassword(password, user.passwordHash))
     return NextResponse.json({ error: "E-mail ou senha inválidos." }, { status: 401 });
   const session = await createSession(user.id);

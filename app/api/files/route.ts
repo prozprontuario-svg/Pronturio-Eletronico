@@ -4,9 +4,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { canWrite, clinicalDenied, clinicalUser, sameOrigin } from "@/lib/auth";
 import { safeText } from "@/lib/validation";
-import { prisma } from "@/lib/prisma";
+import { store } from "@/lib/json-db";
 import { uploadsPath } from "@/lib/storage";
-import { filesBucket, isCloudflareWorker } from "@/lib/cloudflare";
 import { withApiErrors } from "@/lib/api";
 
 export const runtime = "nodejs";
@@ -20,23 +19,18 @@ export const POST = withApiErrors(async (request: NextRequest) => {
   const file = form?.get("file");
   const patientId = safeText(form?.get("patient"),100);
   const category = safeText(form?.get("category"),30);
-  if (!(file instanceof File) || !(await (await prisma()).patient.findUnique({where:{id:patientId},select:{id:true}})))
+  if (!(file instanceof File) || !(await (await store()).patient.findUnique({where:{id:patientId},select:{id:true}})))
     return NextResponse.json({error:"Arquivo ou paciente inválido."},{status:400});
   if (file.size === 0 || file.size > 10*1024*1024 || !permitted.has(file.type))
     return NextResponse.json({error:"Envie PDF ou imagem com até 10 MB."},{status:400});
   const id = randomUUID();
   const bytes = await file.arrayBuffer();
-  const bucket = filesBucket();
-  if (bucket) await bucket.put(id, bytes);
-  else {
-    if (isCloudflareWorker()) throw new Error("Binding R2 FILES não configurado.");
-    await fs.mkdir(uploadsPath(),{recursive:true});
-    await fs.writeFile(path.join(uploadsPath(),id),Buffer.from(bytes),{flag:"wx"});
-  }
+  await fs.mkdir(uploadsPath(),{recursive:true});
+  await fs.writeFile(path.join(uploadsPath(),id),Buffer.from(bytes),{flag:"wx"});
   const data = JSON.stringify({Arquivo:file.name.slice(0,180),ArquivoID:id,Tipo:file.type,
     Categoria:["Termos","Laudos","Exames","Imagens","Outros"].includes(category)?category:"Outros"});
   const now = new Date().toISOString();
-  await (await prisma()).$transaction(async(tx)=>{
+  await (await store()).$transaction(async(tx: any)=>{
     await tx.clinicalRecord.create({data:{id,patientId,type:"documentos",data,status:"confirmed",authorId:user.id,createdAt:now,updatedAt:now}});
     await tx.audit.create({data:{id:randomUUID(),userId:user.id,action:"upload",entity:"documentos",recordId:id,at:now}});
   });

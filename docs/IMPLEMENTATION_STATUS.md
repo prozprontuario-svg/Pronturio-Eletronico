@@ -3,7 +3,7 @@
 | Bloco | Estado | Critério de conclusão |
 | --- | --- | --- |
 | Inventário Figma e memória local | Em implementação | 85 entradas registradas; falta validação visual atual de todas as telas por limite MCP |
-| Base técnica e persistência | Validado | Next, TypeScript, Tailwind, Prisma, SQLite, seed local e build |
+| Base técnica e persistência | Validado | Next, TypeScript, Tailwind e persistência em JSON local |
 | Autenticação e administração | Validado | Admin único via `.env.local` (sem /setup); admin restrito ao painel e bloqueado nas APIs clínicas; CRUD de contas (criar, editar, nova senha, desativar, excluir sem registros); integração passou |
 | Pacientes e prontuário | Em implementação | Busca, filtros Internados/Todos, estado vazio e retorno à lista completa validados no navegador; cadastro e contexto implementados; URLs sem paciente ou com ID inválido retornam à lista; identificação e internação usam dados do paciente selecionado; comparação visual com o Figma atual pendente |
 | Registros clínicos | Validado | Anotação, sinais vitais (a partir do Resumo), anamnese, exame físico, admissão e alergias/riscos registrados e relidos no navegador; telas só-leitura do design ganharam painel de registro com a mesma autorização da API; perfis sem permissão veem aviso de consulta |

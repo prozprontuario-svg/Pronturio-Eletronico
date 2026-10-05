@@ -34,7 +34,7 @@ async function json(url, method="GET", body, cookie) {
 test("fluxo local de autenticação, autorização e registro clínico", async () => {
   const dir=await mkdtemp(path.join(tmpdir(),"proz-test-"));
   const proc=spawn(process.execPath,["node_modules/next/dist/bin/next","start","-p","3101","--hostname","127.0.0.1"],{
-    cwd:process.cwd(),env:{...process.env,DATABASE_PATH:path.join(dir,"test.sqlite"),ADMIN_EMAIL:"admin@hospital.local",ADMIN_PASSWORD:"SenhaLocal123!",ADMIN_NAME:"Admin Local",UPLOADS_PATH:path.join(dir,"uploads")},stdio:["ignore","pipe","pipe"]
+    cwd:process.cwd(),env:{...process.env,PROZ_DATA_DIR:path.join(dir,"data"),ADMIN_EMAIL:"admin@hospital.local",ADMIN_PASSWORD:"SenhaLocal123!",ADMIN_NAME:"Admin Local"},stdio:["ignore","pipe","pipe"]
   });
   try {
     await waitReady(proc);
@@ -42,6 +42,12 @@ test("fluxo local de autenticação, autorização e registro clínico", async (
     assert.equal(blocked.status,307);
     const setupGone=await fetch(base+"/setup",{redirect:"manual"});
     assert.equal(setupGone.status,404);
+    const emptyAuth=await fetch(base+"/api/auth",{method:"POST",headers:{Origin:base,"Content-Type":"application/json"}});
+    assert.equal(emptyAuth.status,401);
+    assert.equal(typeof (await emptyAuth.json()).error,"string");
+    const malformedAuth=await fetch(base+"/api/auth",{method:"POST",headers:{Origin:base,"Content-Type":"application/json"},body:"{"});
+    assert.equal(malformedAuth.status,401);
+    assert.equal(typeof (await malformedAuth.json()).error,"string");
     const wrong=await json("/api/auth","POST",{email:"admin@hospital.local",password:"errada"});
     assert.equal(wrong.response.status,401);
     const login=await json("/api/auth","POST",{email:"admin@hospital.local",password:"SenhaLocal123!"});
@@ -83,8 +89,9 @@ test("fluxo local de autenticação, autorização e registro clínico", async (
     const techLogin=await json("/api/auth","POST",{email:"tecnico@hospital.local",password:"SenhaTecnico123!"});
     assert.equal(techLogin.response.status,200);
     const techCookie=techLogin.response.headers.get("set-cookie")?.split(";")[0];
+    assert.equal((await json("/api/auth","GET",undefined,techCookie)).response.status,200,"Cookie técnico não autentica");
     const home=await fetch(base+"/app/inicio",{redirect:"manual",headers:{Cookie:techCookie}});
-    assert.equal(home.status,200);
+    assert.equal(home.status,200,`Início redirecionou para ${home.headers.get("location")}: ${serverOutput}`);
     const missingContext=await fetch(base+"/app/resumo",{redirect:"manual",headers:{Cookie:techCookie}});
     assert.equal(missingContext.status,307);
     assert.match(missingContext.headers.get("location")||"",/\/app\/pacientes$/);
