@@ -14,5 +14,6 @@ function run(command, args, childEnv = env) {
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
 
+run(process.execPath, ["scripts/generate-prisma.mjs"]);
 run(process.execPath, [path.join("node_modules", "next", "dist", "bin", "next"), "build"]);
 run(process.execPath, [path.join("node_modules", "@opennextjs", "cloudflare", "dist", "cli", "index.js"), "build", "--skipNextBuild"]);
