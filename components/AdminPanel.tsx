@@ -24,7 +24,7 @@ export function AdminPanel({ user }: { user:{id:string;name:string;role:string} 
   async function reload() {
     const response = await fetch("/api/users").catch(() => null);
     if (response?.status === 401) { router.push("/"); return; }
-    if (response?.ok) setUsers(await response.json());
+    if (response?.ok) setUsers(await response.json().catch(() => []));
     else setNotice({kind:"error",text:"Não foi possível carregar os usuários."});
     setLoaded(true);
   }

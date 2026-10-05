@@ -8,5 +8,5 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const user = await userFromToken((await cookies()).get(SESSION_COOKIE)?.value);
   if (user) redirect(user.role === "admin" ? "/app/admin" : "/app/inicio");
-  return <AuthForm configured={adminConfigured()} />;
+  return <AuthForm configured={await adminConfigured()} />;
 }

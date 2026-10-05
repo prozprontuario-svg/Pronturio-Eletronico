@@ -8,11 +8,12 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 const base = "http://127.0.0.1:3101";
+let serverOutput = "";
 async function waitReady(proc) {
   let output="";
   let last="";
-  proc.stdout?.on("data",(chunk)=>{output+=String(chunk).slice(-2000);});
-  proc.stderr?.on("data",(chunk)=>{output+=String(chunk).slice(-2000);});
+  proc.stdout?.on("data",(chunk)=>{output+=String(chunk).slice(-2000);serverOutput=output;});
+  proc.stderr?.on("data",(chunk)=>{output+=String(chunk).slice(-2000);serverOutput=output;});
   for (let i=0;i<80;i++) {
     if (proc.exitCode !== null) throw new Error(`Servidor encerrou antes dos testes. ${output}`);
     try {
@@ -130,7 +131,7 @@ test("fluxo local de autenticação, autorização e registro clínico", async (
     uploadData.append("patient",newPatient.data.id);
     uploadData.append("file",new Blob(["%PDF-1.4\n%%EOF"],{type:"application/pdf"}),"teste.pdf");
     const uploaded=await fetch(base+"/api/files",{method:"POST",headers:{Origin:base,Cookie:techCookie},body:uploadData});
-    assert.equal(uploaded.status,201);
+    assert.equal(uploaded.status,201,`${await uploaded.clone().text()}\n${serverOutput}`);
     const fileId=(await uploaded.json()).id;
     const downloaded=await fetch(base+`/api/files/${fileId}`,{headers:{Cookie:techCookie}});
     assert.equal(downloaded.status,200);

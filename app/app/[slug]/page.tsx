@@ -32,18 +32,19 @@ export default async function AppScreen({ params, searchParams }: {
   const { patient: requested, abrir, filter } = await searchParams;
   const openSection = abrir && patientSections.has(abrir) ? abrir : undefined;
   if (!requested && patientSections.has(slug)) redirect("/app/pacientes");
+  const database = await prisma();
   // Cada tela consulta apenas os dados que apresenta. A seleção do paciente
   // continua validada mesmo quando o módulo não precisa carregar seus registros.
   const [patientRows, selectedPatient, counts, surgeryRows] = await Promise.all([
     ["inicio", "pacientes", "sem-resultados"].includes(slug)
-      ? prisma().patient.findMany({orderBy:{name:"asc"}}) : Promise.resolve([]),
-    requested ? prisma().patient.findUnique({where:{id:requested}}) : Promise.resolve(null),
+      ? database.patient.findMany({orderBy:{name:"asc"}}) : Promise.resolve([]),
+    requested ? database.patient.findUnique({where:{id:requested}}) : Promise.resolve(null),
     slug === "inicio" ? Promise.all([
-      prisma().patient.count({where:{status:{startsWith:"Internad"}}}),
-      prisma().clinicalRecord.count({where:{status:"draft"}}),
-      prisma().clinicalRecord.count({where:{type:"cirurgia",status:"confirmed"}}),
+      database.patient.count({where:{status:{startsWith:"Internad"}}}),
+      database.clinicalRecord.count({where:{status:"draft"}}),
+      database.clinicalRecord.count({where:{type:"cirurgia",status:"confirmed"}}),
     ]) : Promise.resolve([0, 0, 0]),
-    slug === "cirurgias" ? prisma().clinicalRecord.findMany({where:{type:"cirurgia",status:"confirmed"},
+    slug === "cirurgias" ? database.clinicalRecord.findMany({where:{type:"cirurgia",status:"confirmed"},
       include:{patient:true},orderBy:{createdAt:"asc"}}) : Promise.resolve([]),
   ]);
   const patients: Patient[] = patientRows.map(patientFromPrisma)
@@ -51,7 +52,7 @@ export default async function AppScreen({ params, searchParams }: {
   if (requested && !selectedPatient) redirect("/app/pacientes");
   const patient = selectedPatient ? patientFromPrisma(selectedPatient) : null;
   const records = patient && patientSections.has(slug)
-    ? (await prisma().clinicalRecord.findMany({where:{patientId:patient.id},include:{author:{select:{name:true}}},orderBy:{createdAt:"desc"},take:100}))
+    ? (await database.clinicalRecord.findMany({where:{patientId:patient.id},include:{author:{select:{name:true}}},orderBy:{createdAt:"desc"},take:100}))
       .map((row) => ({ ...recordFromPrisma(row), author_name:row.author.name, data: JSON.parse(row.data) as Record<string,string> }))
     : [];
   const stats = {admitted:counts[0], drafts:counts[1], surgeries:counts[2]};

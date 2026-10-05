@@ -17,7 +17,7 @@ export function AuthForm({ configured }: { configured: boolean }) {
       method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data),
     }).catch(() => null);
     if (!response) { setBusy(false); setError("Sem conexão. Tente novamente."); return; }
-    const result = await response.json();
+    const result = await response.json().catch(() => ({ error: "Erro interno do servidor" }));
     if (!response.ok) { setBusy(false); setError(result.error || "Não foi possível continuar."); return; }
     router.replace(result.role === "admin" ? "/app/admin" : "/app/setembro");
   }

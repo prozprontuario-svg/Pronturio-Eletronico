@@ -1,5 +1,4 @@
-import fs from "node:fs";
-import path from "node:path";
+import archive from "@/design-reference/figma/design-archive.json";
 
 export type DesignNode = {
   kind: "frame" | "text" | "icon";
@@ -15,8 +14,7 @@ type Screen = { key: string; title: string; device: "Desktop" | "Mobile"; resolv
 let screens: Screen[] | null = null;
 export function getScreens(key: string) {
   if (!screens) {
-    const file = path.join(process.cwd(), "design-reference/figma/design-archive.json");
-    screens = (JSON.parse(fs.readFileSync(file, "utf8")) as { screens: Screen[] }).screens;
+    screens = (archive as { screens: Screen[] }).screens;
   }
   return screens.filter((screen) => screen.key === key);
 }

@@ -236,7 +236,7 @@ export function DesignScreen({ slug, screens, offlineScreens, user, patient, pat
     const response = await fetch("/api/records", { method:"POST", headers:{"Content-Type":"application/json"},
       body:JSON.stringify({patientId,type,data,status}) }).catch(() => null);
     setBusy(false);
-    const result = response ? await response.json() : {error:"Sem conexão."};
+    const result = response ? await response.json().catch(() => ({error:"Erro interno do servidor"})) : {error:"Sem conexão."};
     if (!response?.ok) {
       if (response?.status === 401) navigate("sessao");
       else inform(result.error || "Erro ao salvar.","error");
@@ -258,7 +258,7 @@ export function DesignScreen({ slug, screens, offlineScreens, user, patient, pat
     setBusy(true);
     const response = await fetch("/api/patients", { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body) }).catch(() => null);
     setBusy(false);
-    const result = response ? await response.json() : {error:"Sem conexão."};
+    const result = response ? await response.json().catch(() => ({error:"Erro interno do servidor"})) : {error:"Sem conexão."};
     if (!response?.ok) { inform(result.error || "Não foi possível cadastrar.","error"); return; }
     localStorage.removeItem(draftKey("cadastro", patientId));
     navigate("resumo", result.id);
@@ -431,7 +431,7 @@ export function DesignScreen({ slug, screens, offlineScreens, user, patient, pat
     setBusy(true);
     const response = await fetch("/api/files",{method:"POST",body:data}).catch(()=>null);
     setBusy(false);
-    const result = response ? await response.json() : {error:"Sem conexão."};
+    const result = response ? await response.json().catch(() => ({error:"Erro interno do servidor"})) : {error:"Sem conexão."};
     if (!response?.ok) { inform(result.error || "Erro no envio.","error"); return; }
     inform("Arquivo anexado.","success");router.refresh();
   }

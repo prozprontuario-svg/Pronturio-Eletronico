@@ -49,6 +49,6 @@ O teste de integração inicia um servidor local com banco temporário e verific
 - `prisma/schema.prisma` define os modelos. `DATABASE_PATH` permite mover o arquivo SQLite; veja `.env.example`.
 - `docs/IMPLEMENTATION_STATUS.md` registra o andamento e as limitações verificadas.
 
-O Figma atual permaneceu intacto. O sistema usa banco e anexos locais. A
-preparação do pacote Cloudflare e as limitações de persistência em Workers
-estão descritas em [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+O Figma atual permaneceu intacto. Desenvolvimento local usa SQLite e uploads
+locais; o Worker usa D1 e R2. Consulte [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+para configurar os bindings e aplicar a migration antes de publicar.

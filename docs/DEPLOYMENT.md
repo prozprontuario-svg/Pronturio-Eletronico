@@ -1,92 +1,57 @@
-# Aplicação real e prévia visual
+# Cloudflare Workers
 
-O build `a868da4` publicava apenas `Proz-Saude/Preview` como arquivos estáticos.
-O comando de build verificava a sintaxe de `app.js`, sem compilar Next.js.
-Isso explica por que o endereço do Cloudflare abria a demonstração visual.
+The deployed Next.js app uses OpenNext and Wrangler. Production persistence is
+Cloudflare D1 through Prisma's `@prisma/adapter-d1`; attachments are stored in
+the private R2 bucket bound as `FILES`. SQLite (`node:sqlite`) and `./uploads`
+are loaded only by the local Node.js path. The worker must have both bindings.
 
-Este repositório agora contém a aplicação real na raiz: `app/`, `components/`,
-`lib/`, `prisma/` e `public/`. Os comandos `dev`, `build` e `start` usam Next.js.
-Os arquivos de `Proz-Saude/Preview` foram removidos: não há mais página de
-demonstração, seletor de telas ou alternância manual entre desktop e celular.
-O servidor estático e a configuração Wrangler que publicavam a prévia também
-foram removidos. A entrada do sistema é o login em `/`.
+## One-time Cloudflare setup
 
-## Execução local
+1. Create a D1 database named `proz-saude` and an R2 bucket named
+   `proz-saude-private-attachments` in the same Cloudflare account as Worker
+   `pronturio-eletronico`.
+2. Replace `REPLACE_WITH_D1_DATABASE_ID` in `wrangler.jsonc` with that D1
+   database's ID. Keep the `DB` and `FILES` binding names unchanged.
+3. Apply the initial schema and fictional demo patients:
+
+   ```powershell
+   npx wrangler d1 migrations apply proz-saude --remote
+   ```
+
+4. Configure `ADMIN_EMAIL` and `ADMIN_NAME` as Worker variables and
+   `ADMIN_PASSWORD` as a Worker secret (minimum 8 characters). Before login,
+   the app synchronizes the seeded `admin` account and stores only its
+   scrypt password hash. Do not add `.env.local` to the Worker or Git.
+5. Set the Cloudflare build command to `npm run cf:build`, deploy command to
+   `npx wrangler deploy`, and project root to `/`. Build must install
+   devDependencies because OpenNext and Wrangler are build dependencies.
+
+No Cloudflare resource is created or deployed by this repository change. The
+existing Worker must receive the `DB` and `FILES` bindings and the migration
+before the new app version can use D1 and R2. Existing SQLite data and files
+cannot be copied from a Worker filesystem; import any records that exist only
+in that environment through a separately verified export before cutover.
+
+## API and storage behavior
+
+All API route handlers return a JSON 500 response with the generic message
+`Erro interno do servidor` on uncaught failures; details are logged only on
+the server. Client login and clinical forms also handle invalid or empty JSON
+responses without throwing a JSON parse error.
+
+R2 stores new uploaded documents using their UUID as the object key. The
+associated patient, document metadata, and audit entry remain in D1. Local
+Node.js development continues to use `DATABASE_PATH` and `UPLOADS_PATH` from
+`.env.local`; these values are not read when the Worker has its bindings.
+
+## Local development and checks
 
 ```powershell
 npm.cmd ci
 npm.cmd run db:generate
-# Configure .env.local a partir de .env.example, sem compartilhar as credenciais.
 npm.cmd run dev
 ```
 
-Abra `http://127.0.0.1:3000`. Para produção local, use `npm.cmd run build` e
-`npm.cmd start`. A autenticação, o banco SQLite, os anexos e a auditoria usam
-a implementação real do prontuário.
-
-## Limite do Cloudflare
-
-### Falha de publicação de 01/10/2026 — código 10143
-
-O log do commit `0206a77` mostra que o build Next.js e o build OpenNext
-terminaram, mas a publicação foi recusada: `WORKER_SELF_REFERENCE` apontava
-para `proz-saude-local`, enquanto o Worker existente era `pronturio-eletronico`.
-Sem uma configuração versionada do adaptador, o comando `npx wrangler deploy`
-executou a migração automática; OpenNext usou o campo `name` de `package.json`
-para gerar o nome do serviço. O nome do pacote e o lockfile agora usam
-`pronturio-eletronico`, alinhado ao Worker do painel, para corrigir essa
-referência na próxima geração. Não renomear esse pacote sem revisar a
-configuração gerada do Cloudflare.
-
-Essa correção trata a falha de referência do serviço. Não constitui validação
-do runtime, da autenticação ou da persistência no Cloudflare. Os requisitos
-de adaptação do banco e dos anexos continuam descritos abaixo. As credenciais
-de `.env.local` não são enviadas ao GitHub nem configuradas por esta mudança.
-
-Referências: [geração do nome pelo OpenNext](https://github.com/opennextjs/opennextjs-cloudflare/blob/main/packages/cloudflare/src/cli/utils/create-wrangler-config.ts)
-e [configuração de WORKER_SELF_REFERENCE](https://opennext.js.org/cloudflare/get-started).
-
-### Falha de instalação de 01/10/2026 — npm E404
-
-O log seguinte passou pelo build Next.js, mas a migração automática não
-conseguiu baixar `baseline-browser-mapping@2.11.27`. O endpoint do arquivo
-retornou HTTP 404; o arquivo da versão `2.11.26` retornou HTTP 200.
-
-Agora o repositório inclui OpenNext `1.20.7` e Wrangler `4.146.0` com versões
-exatas e lockfile. `overrides` fixa `baseline-browser-mapping` em `2.11.26`.
-Next.js foi atualizado para `16.3.8`, compatível com o peer dependency do
-adaptador. `wrangler.jsonc` e `open-next.config.ts` ficam versionados, com
-o mesmo nome em `name` e `WORKER_SELF_REFERENCE`.
-
-As configurações atuais do painel continuam: build `npm run build`, deploy
-`npx wrangler deploy`, raiz `/`. O script `postbuild` empacota a saída Next.js
-com OpenNext usando `--skipNextBuild`, sem repetir a compilação Next.js.
-Assim `.open-next/worker.js` e `.open-next/assets` já existem quando Wrangler
-inicia; ele usa o pacote instalado pelo lockfile e não precisa migrar o
-projeto nem instalar o adaptador durante a publicação. `.open-next/` fica
-ignorado pelo Git. A instalação deve incluir as devDependencies.
-
-Empacotar e publicar não valida a persistência do sistema no runtime Workers:
-o banco SQLite local e os anexos em disco ainda dependem da adaptação abaixo.
-
-A aplicação depende de Node.js 24, SQLite/Prisma e armazenamento no disco.
-O build Next.js não é um diretório estático que possa substituir `Preview`
-no Wrangler. Servir o sistema em Workers exige adaptar o runtime e a
-persistência; essa migração não faz parte da versão local. O filesystem de
-Workers é temporário e não substitui o disco persistente usado pelo banco e
-pelos anexos deste projeto. Referências oficiais:
-
-- [Next.js com OpenNext](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)
-- [Filesystem de Workers](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/)
-
-Não execute `npx wrangler deploy` com a configuração antiga. As instruções
-permanentes em `AGENTS.md` e `docs/PROJECT_SOURCE_OF_TRUTH.md` mantêm esta
-versão em localhost e proíbem deploy ou ativação de serviços externos.
-Alterar os arquivos locais não altera o endereço que já foi publicado.
-
-## Validação local — 01/10/2026
-
-`npm run lint`, `npm run typecheck`, `npm run build` e `npm test` passaram
-na raiz deste repositório. O teste existente executou o fluxo real de
-autenticação, autorização, contas, pacientes, registros clínicos e anexos
-com banco temporário e dados fictícios.
+Use `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd test`, and
+`npm.cmd run build` for local checks. Integration tests use a temporary local
+SQLite database and fictional data; they do not connect to Cloudflare.
