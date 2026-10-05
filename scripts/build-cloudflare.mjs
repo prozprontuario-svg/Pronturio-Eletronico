@@ -1,3 +1,16 @@
+import { readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+
+const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const wranglerConfig = await readFile(resolve(projectRoot, "wrangler.jsonc"), "utf8");
+if (wranglerConfig.includes("REPLACE_WITH_D1_DATABASE_ID")) {
+  console.error(
+    "Cloudflare build blocked: configure the real D1 database_id for 'proz-saude' in wrangler.jsonc. See docs/DEPLOYMENT.md.",
+  );
+  process.exit(1);
+}
+
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 
