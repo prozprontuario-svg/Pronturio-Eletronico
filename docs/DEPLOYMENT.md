@@ -10,8 +10,10 @@ are loaded only by the local Node.js path. The worker must have both bindings.
 1. Create a D1 database named `proz-saude` and an R2 bucket named
    `proz-saude-private-attachments` in the same Cloudflare account as Worker
    `pronturio-eletronico`.
-2. Replace `REPLACE_WITH_D1_DATABASE_ID` in `wrangler.jsonc` with that D1
-   database's ID. Keep the `DB` and `FILES` binding names unchanged.
+2. In the Cloudflare Workers Builds settings, bind that database to the Worker
+   as `DB`, and bind the R2 bucket as `FILES`. The D1 UUID is intentionally not
+   stored in this repository; Wrangler resolves the binding from the Cloudflare
+   Worker configuration during deployment.
 3. Apply the initial schema and fictional demo patients:
 
    ```powershell
