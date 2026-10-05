@@ -2,6 +2,7 @@ import { DatabaseSync } from "node:sqlite";
 import fs from "node:fs";
 import path from "node:path";
 import { MIN_PASSWORD, passwordHash, verifyPassword } from "@/lib/password";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export type Role = "admin" | "enfermeiro" | "tecnico" | "medico";
 export type User = { id: string; email: string; name: string; role: Role; active: number; password_hash: string };
@@ -10,11 +11,26 @@ export type RecordRow = { id: string; patient_id: string; type: string; data: st
 
 let database: DatabaseSync | null = null;
 let adminSyncedFor = "";
+function adminEnvironment() {
+  let bindings: Record<string, unknown> = {};
+  let cloudflare = false;
+  try {
+    bindings = getCloudflareContext().env as Record<string, unknown>;
+    cloudflare = true;
+  } catch { /* desenvolvimento local: usar process.env */ }
+  return {
+    email: String(bindings.ADMIN_EMAIL ?? process.env.ADMIN_EMAIL ?? "").trim().toLowerCase() || "admin@hospital.com",
+    password: String(bindings.ADMIN_PASSWORD ?? process.env.ADMIN_PASSWORD ?? ""),
+    name: String(bindings.ADMIN_NAME ?? process.env.ADMIN_NAME ?? "Administrador"),
+    cloudflare,
+  };
+}
 // Reaplica a conta administradora sempre que ADMIN_* mudar (inclusive com o servidor de desenvolvimento rodando).
 function ensureAdmin(target: DatabaseSync) {
-  const key = [process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD, process.env.ADMIN_NAME].join("\n");
+  const config = adminEnvironment();
+  const key = [config.email, config.password, config.name].join("\n");
   if (key === adminSyncedFor) return;
-  syncAdmin(target);
+  syncAdmin(target, config);
   adminSyncedFor = key;
 }
 export function db() {
@@ -74,26 +90,23 @@ export function db() {
 }
 
 export function adminConfigured() {
-  const email = (process.env.ADMIN_EMAIL || "").trim().toLowerCase();
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && (process.env.ADMIN_PASSWORD || "").length >= MIN_PASSWORD;
+  const { email, password } = adminEnvironment();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && password.length >= MIN_PASSWORD;
 }
 // A única conta administradora vem de ADMIN_EMAIL / ADMIN_PASSWORD (.env.local).
 // Alterar o arquivo e reiniciar o servidor atualiza e-mail, nome e senha; sessões antigas são encerradas.
-function syncAdmin(database: DatabaseSync) {
-  if (!adminConfigured()) return;
-  const email = process.env.ADMIN_EMAIL!.trim().toLowerCase();
-  const password = process.env.ADMIN_PASSWORD!;
-  const name = (process.env.ADMIN_NAME || "Administrador").trim().slice(0, 120) || "Administrador";
+function syncAdmin(database: DatabaseSync, config = adminEnvironment()) {
+  const { email: configuredEmail, password: configuredPassword, name: configuredName, cloudflare } = config;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(configuredEmail) || configuredPassword.length < MIN_PASSWORD) return;
+  const email = configuredEmail;
+  const password = configuredPassword;
+  const name = configuredName.trim().slice(0, 120) || "Administrador";
   const admins = database.prepare("SELECT id, email, name, password_hash, active FROM users WHERE role='admin' ORDER BY created_at")
     .all() as { id: string; email: string; name: string; password_hash: string; active: number }[];
-  const current = admins.find((row) => row.email === email) || admins[0];
+  const current = admins.find((row) => row.email === email);
   const now = new Date().toISOString();
-  if (!current) {
-    const clash = database.prepare("SELECT id FROM users WHERE email=?").get(email);
-    if (clash) { console.error("ADMIN_EMAIL já pertence a um usuário clínico; escolha outro e-mail."); return; }
-    database.prepare("INSERT INTO users(id,email,name,role,password_hash,active,created_at) VALUES (?,?,?,?,?,1,?)")
-      .run("admin", email, name, "admin", passwordHash(password), now);
-  } else {
+  if (!current && cloudflare) return; // Não cria outra conta administrativa no Worker.
+  if (current) {
     if (current.email !== email && database.prepare("SELECT id FROM users WHERE email=? AND id<>?").get(email, current.id)) {
       console.error("ADMIN_EMAIL já pertence a um usuário clínico; escolha outro e-mail."); return;
     }
@@ -103,11 +116,6 @@ function syncAdmin(database: DatabaseSync) {
         .run(email, name, passwordChanged ? passwordHash(password) : current.password_hash, current.id);
       if (passwordChanged || current.email !== email) database.prepare("DELETE FROM sessions WHERE user_id=?").run(current.id);
     }
-  }
-  // Só existe um administrador: contas administrativas antigas (ex.: criadas pelo /setup anterior) são desativadas.
-  for (const extra of admins.filter((row) => row.id !== (current?.id || "admin"))) {
-    database.prepare("UPDATE users SET active=0 WHERE id=?").run(extra.id);
-    database.prepare("DELETE FROM sessions WHERE user_id=?").run(extra.id);
   }
 }
 

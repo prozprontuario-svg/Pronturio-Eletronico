@@ -46,6 +46,29 @@ de `.env.local` não são enviadas ao GitHub nem configuradas por esta mudança.
 Referências: [geração do nome pelo OpenNext](https://github.com/opennextjs/opennextjs-cloudflare/blob/main/packages/cloudflare/src/cli/utils/create-wrangler-config.ts)
 e [configuração de WORKER_SELF_REFERENCE](https://opennext.js.org/cloudflare/get-started).
 
+### Falha de instalação de 01/10/2026 — npm E404
+
+O log seguinte passou pelo build Next.js, mas a migração automática não
+conseguiu baixar `baseline-browser-mapping@2.11.27`. O endpoint do arquivo
+retornou HTTP 404; o arquivo da versão `2.11.26` retornou HTTP 200.
+
+Agora o repositório inclui OpenNext `1.20.7` e Wrangler `4.146.0` com versões
+exatas e lockfile. `overrides` fixa `baseline-browser-mapping` em `2.11.26`.
+Next.js foi atualizado para `16.3.8`, compatível com o peer dependency do
+adaptador. `wrangler.jsonc` e `open-next.config.ts` ficam versionados, com
+o mesmo nome em `name` e `WORKER_SELF_REFERENCE`.
+
+As configurações atuais do painel continuam: build `npm run build`, deploy
+`npx wrangler deploy`, raiz `/`. O script `postbuild` empacota a saída Next.js
+com OpenNext usando `--skipNextBuild`, sem repetir a compilação Next.js.
+Assim `.open-next/worker.js` e `.open-next/assets` já existem quando Wrangler
+inicia; ele usa o pacote instalado pelo lockfile e não precisa migrar o
+projeto nem instalar o adaptador durante a publicação. `.open-next/` fica
+ignorado pelo Git. A instalação deve incluir as devDependencies.
+
+Empacotar e publicar não valida a persistência do sistema no runtime Workers:
+o banco SQLite local e os anexos em disco ainda dependem da adaptação abaixo.
+
 A aplicação depende de Node.js 24, SQLite/Prisma e armazenamento no disco.
 O build Next.js não é um diretório estático que possa substituir `Preview`
 no Wrangler. Servir o sistema em Workers exige adaptar o runtime e a

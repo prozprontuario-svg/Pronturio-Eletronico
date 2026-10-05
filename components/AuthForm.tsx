@@ -26,7 +26,7 @@ export function AuthForm({ configured }: { configured: boolean }) {
     <div style={{height:1,background:"var(--border)"}}/>
     <h1>Entrar no sistema</h1>
     {!configured && <p className="error" role="alert">
-      Conta administradora não configurada. Defina ADMIN_EMAIL e ADMIN_PASSWORD (mínimo 8 caracteres) no arquivo .env.local e reinicie o servidor.
+      Conta administradora não configurada neste ambiente. Configure ADMIN_EMAIL e ADMIN_PASSWORD (mínimo 8 caracteres) como variáveis de runtime ou secrets do Cloudflare Worker.
     </p>}
     <label className="field">E-mail institucional<input type="email" name="email" placeholder="nome@hospital.edu.br" required autoComplete="username"/></label>
     <label className="field">Senha<PasswordInput name="password" placeholder="Digite sua senha" required autoComplete="current-password"/></label>

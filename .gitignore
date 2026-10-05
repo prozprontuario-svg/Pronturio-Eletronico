@@ -2,6 +2,7 @@ node_modules/
 .wrangler/
 .npm-cache/
 .next/
+.open-next/
 .env.local
 .env.*.local
 .dev.vars
