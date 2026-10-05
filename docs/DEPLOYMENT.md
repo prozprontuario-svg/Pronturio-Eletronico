@@ -22,7 +22,7 @@ are loaded only by the local Node.js path. The worker must have both bindings.
    `ADMIN_PASSWORD` as a Worker secret (minimum 8 characters). Before login,
    the app synchronizes the seeded `admin` account and stores only its
    scrypt password hash. Do not add `.env.local` to the Worker or Git.
-5. Set the Cloudflare build command to `npm run cf:build`, deploy command to
+5. Set the Cloudflare build command to `npm run build`, deploy command to
    `npx wrangler deploy`, and project root to `/`. Build must install
    devDependencies because OpenNext and Wrangler are build dependencies.
 
